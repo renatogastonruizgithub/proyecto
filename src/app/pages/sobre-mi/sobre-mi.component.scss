@@ -1,0 +1,199 @@
+@import "../../../variables.scss";
+@import "../../../styles.scss";
+.cardSobreMi {
+  align-items: center;
+  .cardImg {
+    grid-column: 2/5;
+    background-color: $gris;
+  }
+  .cardTexto {
+    grid-column: 6/13;
+    h3 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      line-height: 2.2rem;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+.img-responsive {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  &::before {
+    /* content: " "; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: black;
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0.20772058823529416) 100%
+    );
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0.20772058823529416) 100%
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0.20772058823529416) 100%
+    );
+  }
+  &:hover::before {
+    opacity: 0;
+    transition: 2s;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+}
+@keyframes mov {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -20rem;
+  }
+  100% {
+    left: 0;
+  }
+}
+.skills {
+  margin-top: 4rem;
+  .titles {
+    position: relative;
+    margin-bottom: 5rem;
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+
+  .content-skills {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    margin-top: 3rem;
+  }
+}
+@include tablet {
+  .content-skills {
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important;
+  }
+  .skills {   
+    .titles {    
+      h3 {        
+        font-size: 2rem;
+      }
+    }
+  }
+  .cardSobreMi {
+    .cardTexto {
+      h3 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@include laptop_desktop {
+  .content-skills {
+    margin-bottom: 5rem;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important;
+  }
+  .skills {   
+    .titles {      
+      h3 {       
+        font-size: 4rem;
+      }
+    }
+  .cardSobreMi {
+    .cardTexto {
+      h3 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+}
+.resume {
+  margin-top: 4rem;
+  .titles {
+    margin-bottom: 5rem;
+    h3 {
+      text-align: center;
+      font-size: 4rem;
+    }
+  }
+  .resume-item {
+    padding: 0 0 4rem 2rem;
+    margin-top: -2px;
+    border-left: 2px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    p{
+      font-size: 1.1rem;
+    }
+    h4 {
+      line-height: 18px;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: "Poppins", sans-serif;
+      color: $blanco;
+      margin-bottom: 10px;
+    }
+    h5 {      
+      background: rgba(255, 255, 255, 0.15);
+      padding: 5px 15px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: $blanco;
+      margin: 1rem 0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      padding-bottom: 10px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      left: -9px;
+      top: 0;
+      background: $blanco;
+      border: 2px solid $blanco;
+    }
+  }
+}
+.resume-job{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}

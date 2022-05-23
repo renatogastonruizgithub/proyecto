@@ -1,0 +1,66 @@
+<app-nav></app-nav>
+
+<section class="gridContainer container-fluid">
+  <div class="aside">
+    <app-aside
+      *ngFor="let nombreAside of titleAside"
+      [nombreAside]="nombreAside"
+    ></app-aside>
+  </div>
+  <main class="main">
+    <div class="cardSobreMi gridContainer" *ngFor="let item of sobre">
+      <div class="img-responsive cardImg">
+        <img [src]="item.img" alt="" />
+      </div>
+      <div class="cardTexto">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+    <section class="skills ">
+      <div class="titles">
+        <h3>Habilidades</h3>      
+      </div>     
+      <section class="content-skills">
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+        <app-skills></app-skills>
+      </section>
+    </section>
+    <section class="resume">      
+          <div class="titles">
+            <h3>Educacion</h3>          
+          </div>
+            <div class="resume-item">
+              <h4>Master of Fine Arts &amp; Graphic Design</h4>
+              <h5>2015 - 2016</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+            </div>
+            <div class="resume-item">
+              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
+              <h5>2010 - 2014</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
+            </div>
+           <section class="resume-job">
+              <div class="titles">
+                <h3>Experiencia laboral</h3>          
+              </div>
+              <div class="resume-item">
+                <h4>Master of Fine Arts &amp; Graphic Design</h4>
+                <h5>2015 - 2016</h5>
+                <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+                <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+              </div>
+           </section>
+      
+    </section>
+  <app-footer></app-footer> 
+  </main>
+</section>

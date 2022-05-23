@@ -1,0 +1,238 @@
+/** @format */
+@import "../../../variables.scss";
+.navegation-template {
+  height: 100vh;
+  backdrop-filter: blur(40px);
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  -webkit-animation: fadein 1.1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.1s; /* Firefox < 16 */
+  -ms-animation: fadein 1.1s; /* Internet Explorer */
+  -o-animation: fadein 1.1s; /* Opera < 12.1 */
+  animation: fadein 1.1s;
+  nav {
+    .closeIcon {
+      fill: $gris;
+      right: 5%;
+      position: absolute;
+      top: 7vh;
+      width: 2rem;
+      height: 2rem;
+      z-index: 1003;
+      cursor: pointer;
+      &:hover {
+        fill: $blanco;
+        transition: 0.5s;
+      }
+    }
+  }
+  ul {
+    display: flex;
+    height: 95vh;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: relative;
+    flex-direction: column; 
+    padding-left: 0!important;
+    li {
+      position: relative;
+      &::before {
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        content: " ";
+        background-color: $blanco;
+        opacity: 0.2;
+        z-index: 2;
+      }
+
+      a {
+        font-size: 9vh;
+        font-family: "poppins", sans-serif;
+        position: relative;
+        color: $blanco;
+        cursor: pointer;
+        list-style: none;
+        letter-spacing: 1px;
+        &:hover {
+          color: $azul;
+          animation-duration: 9s;
+        }
+
+        &::before {
+          content: attr(data-text);
+          font-size: 10vh;
+          color: transparent;
+          position: absolute;
+          transition: 0.7s linear;
+          letter-spacing: 1px;
+          white-space: nowrap;
+          transition-delay: 0.1s;
+          letter-spacing: 1px;
+          top: -0.9rem;
+          -webkit-text-stroke: 0.5px $gris;
+          clip-path: polygon(0 0, 100% 0, 0 0, 0 100%);
+          z-index: -1;
+        }
+        &:hover::before {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+      }
+    }
+  }
+}
+@include tablet {
+  .navegation-template {
+    ul {
+      padding-left: 0!important;
+    }
+  }
+}
+@include laptop_desktop {
+  .menu-template .menu-logo .m-logo span {
+    font-size: 3rem;
+  }
+  .menu-template {
+    .menu-logo-name,
+    .menu-logo-lastname {
+      opacity: 0;
+    }
+    &:hover .menu-logo-lastname {
+      opacity: 1;
+      transition: 1.1s;
+    }
+    &:hover .menu-logo-name {
+      opacity: 1;
+      transition: 1.1s;
+    }
+    .menu-arrow i {
+      &:hover {
+        color: #000;
+      }
+    }
+    .menu-list {
+      &:hover span {
+        opacity: 0;
+        transition: 1s;
+      }
+    }
+  }
+
+  .navegation-template {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    backdrop-filter: blur(40px);
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    overflow-y: hidden;
+    -webkit-animation: fadein 1.1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1.1s; /* Firefox < 16 */
+    -ms-animation: fadein 1.1s; /* Internet Explorer */
+    -o-animation: fadein 1.1s; /* Opera < 12.1 */
+    animation: fadein 1.1s;
+    nav {
+      .closeIcon {
+        fill: $gris;
+        right: 5%;
+        position: absolute;
+        top: 7vh;
+        width: 2rem;
+        height: 2rem;
+        z-index: 1003;
+        cursor: pointer;
+        &:hover {
+          fill: $blanco;
+          transition: 0.5s;
+        }
+      }
+    }
+    ul {
+      display: flex;
+      height: 95vh;
+      justify-content: space-around;
+      align-items: flex-start;
+      position: relative;
+      flex-direction: column;
+      padding-left: 0!important;
+      li {
+        position: relative;
+        &:hover:nth-child(1) ~ .fondo {
+          /*  background-image: url("../img/127.0.0.1_5500_sitio_jobs.png"); */
+          background-size: cover;
+          background-position: center;
+          opacity: 1;
+        }
+        &:hover:nth-child(2) ~ .fondo {
+          background-image: url("https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png");
+          background-size: cover;
+          background-position: center;
+          opacity: 1;
+        }
+        &::before {
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          content: " ";
+          background-color: $blanco;
+          opacity: 0.2;
+          z-index: 2;
+        }
+
+        a {
+          font-size: 14vh;
+          font-family: "poppins", sans-serif;
+          position: relative;
+          color: $blanco;
+          cursor: pointer;
+          list-style: none;
+          letter-spacing: 1px;
+          &:hover {
+            color: $azul;
+            animation-duration: 9s;
+          }
+
+          &::before {
+            content: attr(data-text);
+            font-size: 10vh;
+            color: transparent;
+            position: absolute;
+            transition: 0.7s linear;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            transition-delay: 0.1s;
+            letter-spacing: 1px;
+            top: -0.9rem;
+            -webkit-text-stroke: 0.5px $gris;
+            clip-path: polygon(0 0, 100% 0, 0 0, 0 100%);
+            z-index: -1;
+          }
+          &:hover::before {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          }
+        }
+      }
+    }
+  }
+}
+.active {
+  color: $azul !important;
+
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

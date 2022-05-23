@@ -1,0 +1,16 @@
+<app-nav></app-nav>
+
+<section class="gridContainer container-fluid">
+  <div class="aside">
+    <app-aside
+      *ngFor="let nombreAside of titleAside"
+      [nombreAside]="nombreAside"
+    ></app-aside>
+  </div>
+  <main class="main">
+    <div *ngFor="let item of trabajo">
+      <app-card-works [item]="item"> </app-card-works>
+    </div>
+    <app-footer></app-footer>
+  </main>
+</section>

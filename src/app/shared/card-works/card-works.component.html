@@ -1,0 +1,19 @@
+<div class="cardWorks">
+  <div class="content-img">
+    <i class="bi bi-box-arrow-up-right"> </i>
+
+    <img [src]="item.img" alt="" />
+  </div>
+  <div class="content-desc">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+    <ng-content></ng-content>
+    <div class="content-icons">
+      <img [src]="item.vue" alt="" />
+      <img [src]="item.css" alt="" />
+      <img [src]="item.nuxt" alt="" />
+    </div>
+    <button class="butonPrimary" >Ver proyecto</button>
+
+  </div>
+</div>

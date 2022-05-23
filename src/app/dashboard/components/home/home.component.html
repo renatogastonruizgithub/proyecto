@@ -1,0 +1,33 @@
+<div class="container-fluid ">
+    <div class="row ">
+        <div class="col-8 align-items-center">
+            <div class="card">
+                <div class="card-header">
+                 Editar seccion de Home
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Desarrollador web</h5>
+                  <h5 class="card-title">Full stack</h5>
+                  <p class="card-text">Soy Renato Ruiz</p>
+                 
+                  <div class="d-flex flex-column ">
+                    <span>Imagen de banner</span>                   
+                </div>
+                <img src="https://picsum.photos/200/200" class="img-thumbnail" alt="...">
+                  <button data-bs-toggle="modal" class="d-flex flex-column btn btn-primary" (click)="modal.abrirModal()" type="button" >Editar</button>
+                </div>
+              
+             
+            </div>
+            
+        </div>
+        
+    </div>
+    
+  </div>
+
+
+  <app-modal  titulos="Actualizar campos" (click)="cerrarModal($event)"  #modal  >
+ <app-usuarios></app-usuarios>
+<app-trabajos></app-trabajos>
+  </app-modal>

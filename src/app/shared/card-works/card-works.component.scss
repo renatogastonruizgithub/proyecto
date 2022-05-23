@@ -1,0 +1,228 @@
+@import "../../../variables.scss";
+
+.cardWorks {
+  margin-bottom: 3rem;
+  color: rgb(255, 255, 255);
+  /* padding: 2rem; */
+  width: 100%;
+  /*  display: grid;
+  grid-template-columns: repeat(12, 1fr); */
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-family: "poppins", sans-serif;
+  }
+  p {
+    font-size: 1.1rem;
+    font-family: "Lato", sans-serif;
+    margin-bottom: 1.5rem;
+  }
+  span {
+    font-size: 1.2rem;
+    position: relative;
+    cursor: pointer;
+    font-family: "Lato", sans-serif;
+    color: $blanco;
+    &::before {
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      content: " ";
+      background-color: $blanco;
+      z-index: 2;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    &:hover {
+      color: $azul;
+    }
+  }
+  .content-img {
+    grid-column: 1/-1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    /*  padding-right: 4rem; */
+    margin-bottom: 1rem;
+    &:hover i {
+      opacity: 0;
+      transition: 1s;
+    }
+    i {
+      position: absolute;
+      z-index: 20;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: $gris;
+      font-size: 2rem;
+    }
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: rgb(0, 0, 0);
+      background: -moz-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 1) 10%,
+        rgba(0, 0, 0, 0.20772058823529416) 100%
+      );
+      background: -webkit-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 1) 10%,
+        rgba(0, 0, 0, 0.20772058823529416) 100%
+      );
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 1) 10%,
+        rgba(0, 0, 0, 0.20772058823529416) 100%
+      );
+    }
+    &:hover::before {
+      opacity: 0;
+      transition: 2s;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      position: relative;
+    }
+  }
+  .content-desc {
+    grid-column: 1/-1;
+    .content-icons {
+      margin-bottom: 2rem;
+      img {
+        filter: grayscale(90%);
+        width: 30px;
+        height: 30px;
+        margin-right: 0.6rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .cardWorks {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    flex-direction: row-reverse;
+    .content-img {
+      grid-column: 1/4;
+    }
+    .content-desc {
+      grid-column: 5/13;
+    }
+  }
+}
+@include laptop {
+  .content-icons {
+    margin-bottom: 5vh;
+  }
+}
+@include desktop {
+  .cardWorks {
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 4rem;
+      font-family: "poppins", sans-serif;
+    }
+    p {
+      font-size: 1.1rem;
+      font-family: "Lato", sans-serif;
+      margin-bottom: 1.5rem;
+    }
+    span {
+      font-size: 1.2rem;
+      position: relative;
+      cursor: pointer;
+      font-family: "Lato", sans-serif;
+      &::before {
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        content: " ";
+        background-color: $blanco;
+        z-index: 2;
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      &:hover {
+        color: $azul;
+      }
+    }
+    .content-img {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      &:hover i {
+        opacity: 0;
+        transition: 1s;
+      }
+      i {
+        position: absolute;
+        z-index: 20;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: $gris;
+        font-size: 2rem;
+      }
+      &::before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        /*  background-color: $negro;
+        opacity: 0.5; */
+      }
+      &:hover::before {
+        opacity: 0;
+        transition: 2s;
+      }
+
+      img {
+        width: 100%;
+        height: 400px;
+        display: block;
+        object-fit: contain;
+        position: relative;
+      }
+    }
+  }
+  .content-icons {
+    margin-bottom: 8vh;
+  }
+}
+@include laptop_desktop{
+  .cardWorks {
+   
+    .content-img {
+      grid-column: 2/5;
+    }
+    .content-desc {
+      grid-column: 6/13;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<nav class="menu-template">
+  <div class="menu-logo">
+    <div class="m-logo">
+      <span>R</span>
+    </div>
+    <div class="menu-logo-name">
+      <span>u</span>
+      <span>i</span>
+      <span>z</span>
+    </div>
+    <div class="menu-logo-lastname">
+      <span>e</span>
+      <span>n</span>
+      <span>a</span>
+      <span>t</span>
+      <span>o</span>
+    </div>
+  </div>
+  <div class="menu-list">
+    <span id="menu">Menu</span>
+    <!-- <i (click)="modal.openModal()" id="menu-nav" class="bi bi-list"></i> -->
+    <div (click)="modal.openModal()" class="hamburguesa">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+<app-menu-togle #modal></app-menu-togle>

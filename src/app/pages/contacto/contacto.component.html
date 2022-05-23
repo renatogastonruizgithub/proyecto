@@ -1,0 +1,46 @@
+<app-nav></app-nav>
+<section class="pageJobs container-fluid">
+  <app-aside
+    *ngFor="let nombreAside of titleAside"
+    [nombreAside]="nombreAside"
+  ></app-aside>
+  <main class="gridContainer">
+    <section class="main">
+      <h3>¿Tienes algun proyecto en mente?</h3>
+      <div class="container-form">
+        <form class="form">       
+          <div class="input-container">
+            <input
+              class="effect-1"
+              type="text"
+              placeholder="Nombre"
+            />
+            <span class="focus-border"></span>
+          </div>
+          <div class="input-container">
+            <input
+              class="effect-1"
+              type="text"
+              placeholder="Apellido"
+            />
+            <span class="focus-border"></span>
+          </div>
+          <div class="input-container">
+            <input
+              class="effect-1"
+              type="text"
+              placeholder="Tu Email"
+            />
+            <span class="focus-border"></span>
+          </div>
+          <div class="input-container">          
+            <textarea placeholder="Describe tu proyecto" class="effect-1-txt" type="textarea" rows="4" required="required"></textarea>
+            <span class="focus-border-txt"></span>
+          </div> 
+          <button class="butonPrimary">Enviar</button>     
+        </form>
+      </div>
+    </section>
+  </main>
+<app-footer></app-footer>
+</section>

@@ -1,0 +1,20 @@
+@import "../../../variables.scss";
+@import "../../../styles.scss";
+.skill {   
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  flex-direction: column;
+  background:  no-repeat;
+  background-position:  center;
+  background-size:4rem 4rem;
+  z-index: -1;
+  svg{
+    height: 110px;
+    width: 110px; 
+  }
+  span {
+    color: $gris;
+    font-size: 1rem;
+  }
+}

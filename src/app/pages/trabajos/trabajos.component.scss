@@ -1,0 +1,65 @@
+@import "../../../variables.scss";
+@import "../../../styles.scss";
+.pageJobs {
+  /*  display: grid;
+  grid-template-columns: 1fr auto; */
+  background-color: $negro;
+  height: 100vh;
+}
+.content-scroll {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 2rem;
+  height: 100%;
+  margin-top: 10vh;
+  p {
+    font-size: 1rem;
+  }
+  .content-works {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@include laptop {
+  .pageJobs {
+    display: grid;
+    background-color: $negro;
+    height: 100vh;
+  }
+  .content-scroll {
+    background-color: #000000;
+    color: #ffffff;
+    margin-left: 20%;
+    font-size: 2rem;
+    height: 100%;
+    /* padding-left: 2rem; */
+    margin-top: 10vh;
+    p {
+      font-size: 1rem;
+    }
+    .content-works {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
+@include desktop {
+  .content-scroll {
+    margin-left: 10%;
+  }
+  .pageJobs {
+    /*    grid-template-columns: 1fr 4fr; */
+  }
+  .content-works {
+    justify-content: center;
+    .works {
+      .card {
+        flex-direction: row;
+        .content-desc {
+          margin-right: 5rem !important;
+        }
+      }
+    }
+  }
+}

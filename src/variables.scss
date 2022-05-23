@@ -1,0 +1,45 @@
+/** @format */
+
+$blanco: rgb(255, 255, 255);
+$gris: #ffffffa8;
+$negro: #000;
+$azul: #00aadb;
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
+}
+
+@mixin phone {
+  @media only screen and (min-width: 320px) and (max-width: 546px) and (orientation: landscape) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1024px) and (max-width: 1140px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media only screen and (min-width: 1140px) and (max-width: 2560px) {
+    @content;
+  }
+}
+@mixin laptop_desktop {
+  @media only screen and (min-width: 1024px) and (max-width: 2560px) {
+    @content;
+  }
+}
+@mixin phone_tablet {
+  @media only screen and (min-width: 320px) and (max-width: 1024px) {
+    @content;
+  }
+}

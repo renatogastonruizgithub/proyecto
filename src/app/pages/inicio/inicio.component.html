@@ -1,0 +1,40 @@
+<header>
+  <nav class="nav">
+    <div class="cont-logo">
+      <div class="logo">
+        <span>R</span>
+      </div>
+      <div class="logo-name">
+        <span>u</span>
+        <span>i</span>
+        <span>z</span>
+      </div>
+      <div class="logo-lastname">
+        <span>e</span>
+        <span>n</span>
+        <span>a</span>
+        <span>t</span>
+        <span>o</span>
+      </div>
+    </div>
+
+    <a routerLink="/contacto" routerLinkActive="active">Contactame</a>
+  </nav>
+</header>
+<section class="hero container-fluid">
+  <div class="heroDescription">
+    <figcaption>
+      <h2 data-speed="1" class="layer">Soy Renato Ruiz</h2>
+      <h1 data-speed="2" class="layer">Desarrollador web</h1>
+      <h3 data-speed="3" class="layer">full stack</h3>
+      <button class="buton" (click)="modal.openModal()">Empezemos</button>
+    </figcaption>
+  </div>
+  <div class="heroImg">
+    <figure>
+      <img src="./assets/img/banner.png" data-speed="5" class="layer" alt="" />
+    </figure>
+  </div>
+</section>
+
+<app-menu-togle #modal></app-menu-togle>

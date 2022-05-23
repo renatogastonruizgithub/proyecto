@@ -1,0 +1,141 @@
+@import "../../../variables.scss";
+.menu-template {
+  position: fixed;
+  top: 2vh;
+  z-index: 100;
+  left: 5%;
+  height: 8vh;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  
+  .menu-list {
+    display: flex;
+    align-items: center;
+    i {
+      color: $blanco;
+      font-size: 3rem;
+      cursor: pointer;
+    }
+     #menu{
+      color: $gris;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      display: none;
+    }
+  
+    .hamburguesa {
+      height: 40px;
+      width: 40px;
+      justify-content: space-evenly;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      span {
+        width: 100%;
+        background-color: aliceblue;
+        height: 2px;
+        &:nth-child(2) {
+          background-color: aliceblue;
+          height: 2px;
+        }
+      }
+    }
+  }
+  .menu-logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: $blanco;
+    .m-logo {
+      padding: 0 0 5px 0;
+      border: 2px;
+      text-align: center;
+      transform: scaleX(-1);
+      span {
+        font-family: "poppins", sans-serif;
+        font-size: 3rem;
+        color: $blanco;
+      }
+    }
+    .menu-logo-name {
+      transform: scaleX(1);
+      font-family: "poppins", sans-serif;
+    }
+    .menu-logo-lastname {
+      position: absolute;
+      bottom: 0.4rem;
+      left: 2rem;
+      z-index: 2;
+      width: 100%;
+      font-family: "poppins", sans-serif;
+    }
+  }
+}
+
+@include tablet {
+  .menu-template {
+    left: 1rem;
+    width: 96%;
+  }
+}
+
+ @include laptop_desktop {
+  .menu-template {
+    left: 5%;
+    width: 90%;
+  }
+  .menu-list {
+     #menu{     
+      display: block !important ;
+    }
+  }
+  .menu-template .menu-logo .m-logo span {
+    font-size: 3rem;
+  }
+  .menu-template {
+    .menu-logo-name,
+    .menu-logo-lastname {
+      opacity: 0;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      font-family: "poppins", sans-serif;
+    }
+
+    &:hover .menu-logo-lastname {
+      opacity: 1;
+      transition: 1.1s;
+    }
+    &:hover .menu-logo-name {
+      opacity: 1;
+      transition: 1.1s;
+    }
+    .menu-arrow i {
+      &:hover {
+        color: #000;
+      }
+    }
+    .menu-list {
+      span {
+        opacity: 1;
+        margin-right: 20px;
+      }
+      &:hover #menu {
+        opacity: 0;
+        transition: 1s;
+      }
+      .hamburguesa {
+
+        &:hover span:nth-child(1){
+          transform: translateX(10px);
+          width: 80%;
+           
+          transition: ease-in-out .5s;
+        }
+      }
+    }
+  }
+}

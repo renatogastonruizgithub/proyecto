@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+    <base href="/" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, width=device-width, initial-scale=1"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css"
+    />
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+  <body>
+    <app-root>
+      <div class="preloader">
+        <span>¡Hola!</span>
+      </div>
+      <style type="text/css">
+        @keyframes fadein {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+        }
+        .preloader {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 5000;
+          background-color: #000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+          -moz-animation: fadein 3s; /* Firefox < 16 */
+          -ms-animation: fadein 3s; /* Internet Explorer */
+          -o-animation: fadein 3s; /* Opera < 12.1 */
+          animation: fadein 3s;
+        }
+        .preloader.span {
+          color: #fff;
+          font-size: 10rem;
+          letter-spacing: 1px;
+          font-family: "lato", sans-serif;
+        }
+      </style>
+    </app-root>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+html >.main-dashboard{
+background-color:rgb(143, 118, 118) !important;  
+}
+.main-dashboard{
+  background-color: rgb(143, 118, 118) !important;
+  p{
+    color: black !important;
+  }
+  .section-dashboard{
+    p{
+      color: black!important;
+    }
+    background-color: rgb(235, 235, 235) !important;
+   width: 80%;
+   height: 100vh;
+   margin-left: 20%;
+   padding-top: 10vh;
+     }
+}
