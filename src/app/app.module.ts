@@ -22,7 +22,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SkillsComponent } from './shared/skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EducacionComponent } from './dashboard/components/educacion/educacion.component';
 
 @NgModule({
   declarations: [    
@@ -40,7 +39,7 @@ import { EducacionComponent } from './dashboard/components/educacion/educacion.c
     LoaderComponent,
      LoginComponent,
      SkillsComponent,
-     EducacionComponent,
+ 
    
     
    

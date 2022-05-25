@@ -7,6 +7,7 @@ import { Persona } from 'src/app/modelo/Persona';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
 import { ModalComponent } from 'src/app/dashboard/components/modal/modal.component';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
 
 
 @Component({
@@ -32,13 +33,36 @@ export class SobreComponent implements OnInit {
      this.formulario=this.formBuilder.group({
        id:[''],
     nombre:['',[Validators.required,Validators.maxLength(35)]],
-    apellido:['',[Validators.required,Validators.maxLength(35)]]
+    apellido:['',[Validators.required,Validators.maxLength(35)]],
+    nacimiento:['',[Validators.required,]],
+    ocupacion:['',[Validators.required,Validators.maxLength(35)]],
+    stack:['',[Validators.required,Validators.maxLength(35)]],
+    nacionalidad:['',[Validators.required,Validators.maxLength(35)]],
+    provincia:['',[Validators.required,Validators.maxLength(35)]],
+    domicilio:['',[Validators.required,Validators.maxLength(35)]],
+    descripion:['',[Validators.required,Validators.maxLength(535)]],
+    imgBanner:['',[Validators.required,Validators.maxLength(235)]],
+    imgAbout:['',[Validators.required,Validators.maxLength(235)]],
+    nro:['',[Validators.required,Validators.maxLength(35)]],
+    tituloAbout:['',[Validators.required,Validators.maxLength(35)]]
     }) 
+
 
     this.Ediformulario=this.formBuilder.group({
       id:[''],
-   nombre:['',[Validators.required,Validators.maxLength(35)]],
-   apellido:['',[Validators.required,Validators.maxLength(35)]]
+      nombre:['',[Validators.required,Validators.maxLength(35)]],
+      apellido:['',[Validators.required,Validators.maxLength(35)]],
+      nacimiento:['',[Validators.required,]],
+      ocupacion:['',[Validators.required,Validators.maxLength(35)]],
+      stack:['',[Validators.required,Validators.maxLength(35)]],
+      nacionalidad:['',[Validators.required,Validators.maxLength(35)]],
+      provincia:['',[Validators.required,Validators.maxLength(35)]],
+      domicilio:['',[Validators.required,Validators.maxLength(35)]],
+      descripion:['',[Validators.required,Validators.maxLength(535)]],
+      imgBanner:['',[Validators.required,Validators.maxLength(235)]],
+      imgAbout:['',[Validators.required,Validators.maxLength(235)]],
+      nro:['',[Validators.required,Validators.maxLength(35)]],
+      tituloAbout:['',[Validators.required,Validators.maxLength(35)]]   
    })  
 
 
@@ -52,11 +76,7 @@ export class SobreComponent implements OnInit {
   actualizar(){
     this.servicio.getPersona().subscribe(data=>{
       this.personas=data;
-      console.log(data);
-    /*   if(Persona?.length === null ){
-        this.validar=true;
-       console.log(this.validar);
-      } */
+      console.log(data); 
       })
       
   }
@@ -65,8 +85,20 @@ export class SobreComponent implements OnInit {
   this.edit=true;
    this.Ediformulario.setValue({
     id:personas.id,
-    nombre:personas.nombre,
-    apellido:personas.apellido,
+     nombre:personas.nombre,
+      apellido:personas.apellido,
+   
+    nacimiento:personas.nacimiento, 
+    ocupacion:personas.ocupacion, 
+    stack:personas.stack, 
+    nacionalidad:personas.nacionalidad, 
+    provincia:personas.provincia, 
+    domicilio:personas.domicilio, 
+    descripion:personas.descripion, 
+    imgBanner:personas.imgBanner, 
+   imgAbout:personas.imgAbout, 
+    nro:personas.nro, 
+    tituloAbout:personas.tituloAbout 
     })
  } 
 
@@ -87,7 +119,7 @@ export class SobreComponent implements OnInit {
           this.personas.push.apply(data);            
           this.formulario.reset();
           this.actualizar();
-          this.modal.valueOf; 
+        
           alert("se creo con exito");     
       })
           
@@ -111,10 +143,17 @@ export class SobreComponent implements OnInit {
   }
 
  editar(){
-   this.servicio.editrPersona(this.Ediformulario.value).subscribe(()=>{
-     alert("se actuzlizo");
-     this.actualizar();   
+   this.servicio.editrPersona(this.Ediformulario.value).subscribe({
+   
     
+  next:(response:Persona)=>{
+    console.log(this.personas)
+      alert("se actuzlizo");
+      this.actualizar();         
+     },
+     error:(error:HttpErrorResponse)=>{
+       alert(error.message);
+     }     
    })
   
 } 
@@ -125,5 +164,40 @@ export class SobreComponent implements OnInit {
   }
   get apellido(){
     return this.formulario.get('apellido');
+  }
+  get nacimiento(){
+    return this.formulario.get('nacimiento');
+  }
+  get ocupacion(){
+    return this.formulario.get('ocupacion');
   } 
+  get stack(){
+    return this.formulario.get('stack');
+  } 
+  get nacionalidad(){
+    return this.formulario.get('nacionalidad');
+  } 
+  get provincia(){
+    return this.formulario.get('provincia');
+  } 
+  get domicilio(){
+    return this.formulario.get('domicilio');
+  } 
+  get descripion(){
+    return this.formulario.get('descripion');
+  } 
+  get imgBanner(){
+    return this.formulario.get('imgBanner');
+  } 
+  get imgAbout(){
+    return this.formulario.get('imgAbout');
+  } 
+  get tituloAbout(){
+    return this.formulario.get('tituloAbout');
+  } 
+  get nro(){
+    return this.formulario.get('nro');
+  } 
+
+
 }
