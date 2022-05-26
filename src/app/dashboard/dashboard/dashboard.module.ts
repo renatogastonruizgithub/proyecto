@@ -17,6 +17,7 @@ import { AdminServicesService } from 'src/app/services/admin-services.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditModalComponent } from '../components/edit-modal/edit-modal.component';
 import { EducacionComponent } from '../components/educacion/educacion.component';
+import { InicioAdminComponent } from '../components/inicio-admin/inicio-admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EducacionComponent } from '../components/educacion/educacion.component'
     SobreComponent,
     EducacionComponent,
     ContactoComponent,
-    EditModalComponent
+    EditModalComponent,
+    InicioAdminComponent,
    ],
   imports: [
     CommonModule,

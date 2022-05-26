@@ -154,6 +154,11 @@ font-family: 'Anton', sans-serif;*/
     margin-right: 5%;
     margin-left: 5%;
     color: $blanco;
+    .direciones{
+      a{
+        margin-left: 1rem;
+      }
+    }
     a {
       color: $blanco;
       font-size: 1.2rem;

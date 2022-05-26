@@ -20,7 +20,7 @@ const routes: Routes = [
       loadChildren: () => import('./dashboard/dashboard/dashboard.module').then(m => m.DashboardModule),
     
     },      
- /*  {path: '**', component: Error404Component},  */   
+  {path: '**', component: Error404Component},   
 ];
 
 @NgModule({

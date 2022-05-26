@@ -39,10 +39,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoaderComponent,
      LoginComponent,
      SkillsComponent,
- 
-   
-    
-   
   
   ],
   imports: [

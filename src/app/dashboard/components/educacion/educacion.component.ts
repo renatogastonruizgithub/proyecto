@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Educacion } from 'src/app/modelo/Educacion';
+import { AdminServicesService } from 'src/app/services/admin-services.service';
 
 @Component({
   selector: 'app-educacion',
@@ -6,10 +10,113 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./educacion.component.scss']
 })
 export class EducacionComponent implements OnInit {
+  educaciones:Educacion[];
+  mostrar:boolean=false;
+  formulario:FormGroup;
+  visibleBtn:boolean=false;
+  constructor(private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
+  {
+    this.formulario=this.formBuilder.group({
+      id:[''],
+      titulo:['',[Validators.required]],
+      info:['',[Validators.required]],
+      instituto:['',[Validators.required]],
+      inicio:['',[Validators.required]],
+      fin:['',[Validators.required]],
+    });
+  
+  
 
-  constructor() { }
+
+   }//fin contruc
 
   ngOnInit(): void {
+    this.refrescar();
   }
 
-}
+  refrescar():void {
+    this.servicio.getEducacion().subscribe({
+      next:(response:Educacion[] )=>{
+        this.educaciones=response;
+        console.log(response)
+      },
+      error:(error:HttpErrorResponse)=>{
+       alert( error.message);
+      }
+    })
+  }//fin refrescar
+
+  cerrarModal(){
+  this.mostrar=false;  
+  }
+
+  openModal(){
+    this.mostrar=true;
+    this.visibleBtn=false;
+    this.formulario.reset();
+  }
+
+
+  guardar()
+  {
+    if(this.formulario.valid) {
+      this.servicio.crearEducacion(this.formulario.value).subscribe({
+
+        next:(response:Educacion )=>{ 
+          this.formulario.reset();
+          this.refrescar();        
+          alert("se creo con exito"); 
+        },
+        error:(error:HttpErrorResponse)=>{
+          alert(error.message); 
+        }            
+      })
+          
+    } 
+    else{
+      alert("campos vacios"); 
+
+    }
+  }
+
+  openEditar(item:any){
+    this.openModal();
+    this.visibleBtn=true;
+    this.formulario.controls['id'].setValue(item.id); 
+    this.formulario.controls['titulo'].setValue(item.titulo);
+    this.formulario.controls['info'].setValue(item.info);
+    this.formulario.controls['instituto'].setValue(item.instituto);
+    this.formulario.controls['inicio'].setValue(item.inicio);
+    this.formulario.controls['fin'].setValue(item.fin);
+  }
+
+  actualizar(){
+    this.servicio.actualizarEducacion(this.formulario.value).subscribe({
+      next:(response:Educacion)=>{
+        this.refrescar(); 
+        this.formulario.reset();        
+        alert("se creo con exito");
+        this.cerrarModal(); 
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message)
+      }
+    })
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}//fin 

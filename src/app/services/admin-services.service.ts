@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Educacion } from '../modelo/Educacion';
 import { Persona } from '../modelo/Persona';
 
 @Injectable({
@@ -32,6 +33,21 @@ export class AdminServicesService {
   editrPersona(persona:Persona){
     return this.http.put<Persona>(this.url+'actualizarPersona/'+persona.id,persona);
   }
+
+  getEducacion() {
+    return this.http.get<Educacion[]>(this.url+'educacion');
+  }
+  crearEducacion(educacion:Educacion):Observable<Educacion>
+  {
+    return this.http.post<Educacion>(this.url+'educacion/educacion',educacion);
+  }
+
+  actualizarEducacion(educacion:Educacion):Observable<Educacion>
+  {
+    return this.http.put<Educacion>(this.url+'educacion/actualizarEducacion/'+educacion.id,educacion);
+  }
+
+
 
 
 }
