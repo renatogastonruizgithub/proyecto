@@ -22,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SkillsComponent } from './shared/skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [    
@@ -39,6 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoaderComponent,
      LoginComponent,
      SkillsComponent,
+    
+   
   
   ],
   imports: [
@@ -47,7 +50,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,    
+    ToastrModule.forRoot(),
     NgCircleProgressModule.forRoot({    
     })
   ],

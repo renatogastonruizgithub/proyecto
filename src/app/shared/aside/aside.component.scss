@@ -1,68 +1,26 @@
 @import "../../../variables.scss";
 
-/*@keyframes mov {
-  0% {
-    top: 0vh;
-  }
 
-  10% {
-    top: 15vh;
-  }
-
-  20% {
-    top: 30vh;
-  }
-
-  30% {
-    top: 45vh;
-  }
-
-  40% {
-    top: 60vh;
-  }
-
-  50% {
-    top: 75vh;
-  }
-  60% {
-    top: 90vh;
-  }
-   70% {
-    top: -100%;
-  }
-  80% {
-    top: 0;
-  }
-  90% {
-    top: 50vh;
-  }
-  100% {
-    top: 0;
-  } 
-}*/
-.aside-fixed {
-  /* height: 12vh; */
+.aside-fixed {  
   color: #ffffff;
   display: flex;
   align-items: flex-end;
-  position: fixed;
+  position: relative;
   background-color: $negro;
-  top: 4rem;
+  top: 6rem;
+  justify-content: center;
   &::before {
-    width: 100%;
+    width: 90%;
     height: 1px;
     position: absolute;
-    bottom: 0;
-    right: 10px;
+    bottom: 0;   
     content: " ";
     background-color: $blanco;
     z-index: 2;
     opacity: 0.5;
   }
   span {
-    font-size: 17vw;
-    /* writing-mode: vertical-rl;
-    transform: rotate(180deg); */
+    font-size: 2.5rem;   
     word-wrap: break-word;
     font-family: "poppins", sans-serif;
     position: relative;
@@ -72,14 +30,15 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@include tablet {
   .aside-fixed {
     height: 100vh !important;
     display: flex;
     align-items: flex-end;
-    left:-2%;
+    left:1%;
     transform: none;
     margin-top: 0;
+    position: fixed;
     &::before {
       width: 2px;
       height: 40vh;
@@ -90,31 +49,56 @@
       background-color: $blanco;
       z-index: 2;
       opacity: 0.5;
+      left: 6.4rem;
     }
     span {
-      font-size: 17vh;
+      font-size:13vh;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       word-wrap: break-word;
       font-family: "poppins", sans-serif;
       position: relative;
       color: #ffffff;
-      text-align: center;
- 
+      text-align: center; 
       letter-spacing: 1px;
-      margin-bottom: 4rem;
+      margin-bottom: 6.1rem;
     }
   }
 }
-@include tablet {
-  .aside-fixed {
-    span {
-      font-size: 15vh;
-    }
-  }
-}
+
 @include laptop_desktop{
   .aside-fixed {
-    left: 2%;
+    height: 100vh !important;
+    display: flex;
+   align-items: flex-end;
+    left: 1rem;
+    transform: none;
+    top: 0;
+    position: fixed;
+    &::before {
+      width: 2px;
+      height: 40vh;
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      content: " ";
+      background-color: $blanco;
+      z-index: 2;
+      opacity: 0.5;
+      left: 9rem;
+    }
+    span {
+      font-size: 6rem;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      word-wrap: break-word;
+      font-family: "poppins", sans-serif;
+      position: relative;
+      color: #ffffff;    
+      letter-spacing: 1px;
+      margin:0 !important;
+    
+    }
   }
+ 
 }

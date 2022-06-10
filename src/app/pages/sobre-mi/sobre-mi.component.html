@@ -10,57 +10,79 @@
   <main class="main">
     <div class="cardSobreMi gridContainer" *ngFor="let item of sobre">
       <div class="img-responsive cardImg">
-        <img [src]="item.img" alt="" />
+        <img [src]="item.imgAbout" alt="" />
       </div>
       <div class="cardTexto">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+        <h3>{{ item.tituloAbout }}</h3>
+        <p class="tag">{{ tagPOpen }}</p>
+        <p>{{ item.descripion }}</p>
+        <p  class="tag">{{ tagPClose }}</p>
       </div>
     </div>
-    <section class="skills ">
+    <section class="skills">
       <div class="titles">
-        <h3>Habilidades</h3>      
-      </div>     
-      <section class="content-skills">
-        <app-skills></app-skills>
-        <app-skills></app-skills>
-        <app-skills></app-skills>
-        <app-skills></app-skills>
-        <app-skills></app-skills>
-        <app-skills></app-skills>
-        <app-skills></app-skills>
-        <app-skills></app-skills>
+        <h3>{{ skill }}</h3>
+      </div>
+      <section class="content-skills" >
+        <div data-speed="2" class="wraper  layer" *ngFor="let h of habilidades">
+          <div  class=" skill " >
+            <h2>{{h.nombre}}</h2>
+            <img src="../../../assets/img/irradiando.png" alt="">
+            <progress  max="100" value="{{h.numero}}"></progress>
+          </div>
+        
+        </div>
+      
       </section>
     </section>
-    <section class="resume">      
-          <div class="titles">
-            <h3>Educacion</h3>          
+    <section class="resume">
+      <div class="titles">
+        <h3>{{ educacion }}</h3>
+      </div>
+      <div *ngFor="let item of edu">
+        <div class="resume-item">
+          <h4>{{ item.instituto }}()</h4>
+          <p>{{ tagPOpen }}</p>
+          <div class="d-flex mt-1 ml-2">
+            <span class="span"> "Titulo" :</span>
+            <p class="pl-1">
+              "<em>{{ item.titulo }}</em
+              >",
+            </p>
           </div>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-            </div>
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-            </div>
-           <section class="resume-job">
-              <div class="titles">
-                <h3>Experiencia laboral</h3>          
-              </div>
-              <div class="resume-item">
-                <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                <h5>2015 - 2016</h5>
-                <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-              </div>
-           </section>
-      
+          <div class="d-flex mt-1 ml-2">
+            <span class="span">"Descripcion" :</span>
+            <p>"{{ item.info }}"</p>
+          </div>
+          <div class="d-flex mt-1 ml-2">
+            <span class="span">"fech de inicio" :</span>
+            <p>"{{ item.inicio | date: "dd-MM-yyyy" }}",</p>
+          </div>
+          <div class="d-flex mt-1 ml-2">
+            <span class="span">"fech de finalizacion" :</span>
+            <p>"{{ item.fin | date: "dd-MM-yyyy" }}"</p>
+          </div>
+
+          <p>{{ tagPClose }}</p>
+        </div>
+      </div>
+
+      <section class="resume-job">
+        <div class="titles">
+          <h3>{{ expe }}</h3>
+        </div>
+        <div class="resume-item" >
+          <h4>Master of Fine Arts &amp; Graphic Design</h4>
+          <h5>2015 - 2016</h5>
+          <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+          <p>
+            Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam
+            iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti
+            nerada porti sand markend
+          </p>
+        </div>
+      </section>
     </section>
-  <app-footer></app-footer> 
+    <app-footer></app-footer>
   </main>
 </section>

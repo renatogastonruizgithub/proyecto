@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Educacion } from 'src/app/modelo/Educacion';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -14,7 +14,7 @@ export class EducacionComponent implements OnInit {
   mostrar:boolean=false;
   formulario:FormGroup;
   visibleBtn:boolean=false;
-  constructor(private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
+  constructor(private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
   {
     this.formulario=this.formBuilder.group({
       id:[''],
@@ -64,11 +64,12 @@ export class EducacionComponent implements OnInit {
 
         next:(response:Educacion )=>{ 
           this.formulario.reset();
-          this.refrescar();        
-          alert("se creo con exito"); 
+          this.refrescar();
+          this.cerrarModal();
+          this.toastr.success("se creo con exito");   
         },
         error:(error:HttpErrorResponse)=>{
-          alert(error.message); 
+          this.toastr.warning(error.message); 
         }            
       })
           
@@ -94,20 +95,33 @@ export class EducacionComponent implements OnInit {
     this.servicio.actualizarEducacion(this.formulario.value).subscribe({
       next:(response:Educacion)=>{
         this.refrescar(); 
-        this.formulario.reset();        
-        alert("se creo con exito");
-        this.cerrarModal(); 
+        this.formulario.reset();
+        this.cerrarModal();  
+        this.toastr.success("se actualizo con exito");
+        
       },
-      error:(error:HttpErrorResponse)=>{
-        alert(error.message)
+      error:(error:HttpErrorResponse)=>{        
+        this.toastr.warning(error.message);
       }
     })
-
   }
 
 
 
-
+  eliminar(item:any){
+    if(confirm("¿Desea eliminar el registro?")){
+      this.servicio.eliminarEducacion(item.id).subscribe({
+        next:(response:Educacion)=>{ 
+          this.refrescar(); 
+          this.toastr.success('se elimino con exito');         
+        },
+        error:(error:HttpErrorResponse)=>{
+         
+          this.toastr.warning(error.message);
+        }
+      })
+    }
+  }
 
 
 

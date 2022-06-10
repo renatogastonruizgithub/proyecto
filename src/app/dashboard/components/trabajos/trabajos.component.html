@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="row mb-3 ">
+      <div
+        class="card-header mb-3 d-flex align-items-center justify-content-evenly"
+      >
+        <h3 class="text-dark mb-0">Datos sobre tu trabajos</h3>
+      
+        <button
+          data-bs-toggle="modal"
+          class="d-flex flex-column btn btn-primary"
+          type="button"
+          (click)="openModal()"    
+        >
+          Nuevo
+        </button>
+      </div>
+    </div>
+    <ng-template #valid>
+      <div class="row">
+          <div class="col-md-6 align-items-center">
+            <div class="card shadow rounded">
+              <h4 class="text-dark">Por favor ingrese sus trabajos</h4> 
+            </div>
+          </div>
+      </div>
+      
+     </ng-template>
+   
+    <div class="row" *ngIf="trabajos?.length; else valid">
+      
+      <div class="col-md-4 align-items-center" *ngFor="let item of trabajos"  >
+       
+      
+        <div class="card mb-3 shadow rounded" >
+         
+          <div  class="card-body">
+            <div class="card-text">
+              <div class="d-flex flex-column ">
+                <span class="fw-bold">Empresa:</span>
+                <li>{{ item.nombre }}</li>
+                <span class="fw-bold">Cargo:</span>
+                <li>{{ item.cargo }}</li>
+                <span class="fw-bold">Desde:</span>
+                <li>{{ item.inicio | date: "dd/MM/yyyy" }}</li>
+                <span class="fw-bold">Hasta:</span>
+                <li>{{ item.fin | date: "dd/MM/yyyy" }}</li>
+                <span class="fw-bold">Descripcion</span>
+                <li class="card-text">{{ item.descripcion }}</li>
+              </div>
+              <ul>
+                
+                <div class="d-flex mt-3 w-20 justify-content-evenly">
+                  <button (click)="openEditar(item)" type="button" class="btn btn-warning">Editar</button>
+                  
+                  <button (click)="eliminar(item)"  type="button" class="btn btn-danger">Eliminar</button>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+</div>
+  
+
+<div *ngIf="mostrar"  class="modal " tabindex="-1">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">f</h5>
+        <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">               
+   
+         <form [formGroup]="formulario" (ngSubmit)="guardar()" >
+          <div class="form-floating input-group-sm mb-3">
+            <input 
+              type="text"
+              class="form-control"
+              formControlName="nombre"        
+              id="floatingInput"
+            />
+            <label for="floatingInput">Empresa</label>
+        <!--  <p *ngIf="apellido?.hasError('required')&& apellido?.touched" class="alert-danger">falta apellido</p>  -->
+          </div>
+          <div class="form-floating input-group-sm mb-3">
+            <input 
+              type="text"
+              class="form-control"
+              formControlName="cargo"        
+              id="floatingInput"
+            />
+            <label for="floatingInput">Cargo</label>
+        <!--  <p *ngIf="apellido?.hasError('required')&& apellido?.touched" class="alert-danger">falta apellido</p>  -->
+          </div>
+          <div class="form-floating input-group-sm mb-3">
+            <textarea    
+            rows="4"
+            class="form-control"
+            formControlName="descripcion"        
+            id="floatingInput">     
+            </textarea>
+            <label for="floatingInput">Descripion</label> 
+           <!--  <p *ngIf="descripion?.hasError('required')&& descripion?.touched" class="alert-danger">falta descripion</p> -->         
+          </div>
+          <div class="form-floating input-group-sm mb-3">
+            <input 
+              type="date"
+              class="form-control"
+              formControlName="inicio"        
+              id="floatingInput"
+            />
+            <label for="floatingInput">Desde</label>
+            <!-- <p *ngIf="nacimiento?.hasError('required')&& nacimiento?.touched" class="alert-danger">falta nacimiento</p>   --> 
+          </div>
+          <div class="form-floating input-group-sm mb-3">
+            <input 
+              type="date"
+              class="form-control"
+              formControlName="fin"        
+              id="floatingInput"
+            />
+            <label for="floatingInput">Hasta</label>
+           <!--  <p *ngIf="nacimiento?.hasError('required')&& nacimiento?.touched" class="alert-danger">falta nacimiento</p>    -->
+          </div>
+         </form>
+         
+        </div>
+        <div class="modal-footer  justify-content-center "> 
+          
+          <button
+          *ngIf="!visibleBtn"
+          (click)="guardar()"
+          data-bs-toggle="modal"
+          class="d-flex flex-column btn btn-primary"
+          type="button"
+        >
+          Guardar
+        </button>
+        <button
+        (click)="actualizar()"
+        *ngIf="visibleBtn"
+        data-bs-toggle="modal"
+        class="d-flex flex-column btn btn-primary"
+        type="button"        
+      >
+        actualizar
+      </button>
+        </div>
+    </div>
+    </div>
+</div>
+  

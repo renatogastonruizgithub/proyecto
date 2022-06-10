@@ -18,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditModalComponent } from '../components/edit-modal/edit-modal.component';
 import { EducacionComponent } from '../components/educacion/educacion.component';
 import { InicioAdminComponent } from '../components/inicio-admin/inicio-admin.component';
+import { ToastrModule } from 'ngx-toastr';
+import { TrabajosComponent } from '../components/trabajos/trabajos.component';
+import { HabilidadesComponent } from '../components/habilidades/habilidades.component';
+import { ProyectosComponent } from '../components/proyectos/proyectos.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,18 @@ import { InicioAdminComponent } from '../components/inicio-admin/inicio-admin.co
     ContactoComponent,
     EditModalComponent,
     InicioAdminComponent,
+    TrabajosComponent,
+    HabilidadesComponent,
+    ProyectosComponent
    ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
-    ReactiveFormsModule,  
-    HttpClientModule
+    ReactiveFormsModule,
+    
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
    providers: [AdminServicesService], 
   bootstrap: [AppComponent]

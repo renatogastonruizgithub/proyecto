@@ -3,8 +3,12 @@
 .cardSobreMi {
   align-items: center;
   .cardImg {
-    grid-column: 2/5;
-    background-color: $gris;
+    grid-column: 1/5;
+    background-color: $negro;     
+    border-bottom: 1rem solid $blanco;
+    border-left: 0.3rem solid $blanco;
+    border-right: 0.3rem solid $blanco;
+    border-top: 0.3rem solid $blanco;
   }
   .cardTexto {
     grid-column: 6/13;
@@ -15,6 +19,7 @@
     }
     p {
       font-size: 1.1rem;
+      color: $gris;
     }
   }
 }
@@ -86,17 +91,28 @@
   }
 
   .content-skills {
-    display: grid;
+     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
     grid-template-rows: repeat(2, 1fr);
     margin-top: 3rem;
+    .wraper{
+      .skill{
+        img{
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+        }
+      }
+    }
+  
+
   }
 }
 @include tablet {
   .content-skills {
-    gap: 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important;
+     gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important; 
   }
   .skills {   
     .titles {    
@@ -115,15 +131,55 @@
 }
 
 @include laptop_desktop {
-  .content-skills {
-    margin-bottom: 5rem;
-    gap: 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important;
+  .content-skills {   
+    margin-bottom: 5rem;  
+    height: 300px;
+     gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important; 
+  
+     .wraper{     
+      .skill{
+        position: relative;
+        &:hover img{
+          visibility: visible !important;
+          transition: .7s ease-in-out;
+          transform: scale(1.1);
+        }
+        img{
+          width: 30px;
+          height: 30px;
+          object-fit: cover;
+          position: absolute;
+          visibility: hidden;
+          top: -50%;
+          left: 50%;
+          transform: translate(-50%,100%);
+          transition:.5s ease-in-out;         
+        }
+        progress {
+          -webkit-appearance: none;       
+          width: 100%;
+          height: 3px;
+        }
+        ::-webkit-progress-bar {
+          background-color:rgb(78, 78, 78);
+        }
+        ::-webkit-progress-value {
+          background-color: $blanco;
+        }
+      }
+    } 
+
   }
-  .skills {   
+  .skills { 
+    
     .titles {      
       h3 {       
+        color: $blanco;
+        margin: auto;
         font-size: 4rem;
+        max-inline-size: fit-content;
+        
       }
     }
   .cardSobreMi {
@@ -140,23 +196,26 @@
   .titles {
     margin-bottom: 5rem;
     h3 {
-      text-align: center;
+      color: $blanco;
+      margin: auto;
       font-size: 4rem;
+      max-inline-size: fit-content;
+     
     }
   }
   .resume-item {
-    padding: 0 0 4rem 2rem;
-    margin-top: -2px;
-    border-left: 2px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 2rem;
+
     position: relative;
     p{
       font-size: 1.1rem;
+      color: $gris;
     }
+    
     h4 {
       line-height: 18px;
       font-size: 18px;
-      font-weight: 600;
-      text-transform: uppercase;
+      font-weight: 600;    
       font-family: "Poppins", sans-serif;
       color: $blanco;
       margin-bottom: 10px;
@@ -180,7 +239,7 @@
     &:last-child {
       padding-bottom: 0;
     }
-    &::before {
+    /* &::before {
       content: "";
       position: absolute;
       width: 16px;
@@ -190,10 +249,18 @@
       top: 0;
       background: $blanco;
       border: 2px solid $blanco;
-    }
+    } */
+  }
+  .span{
+    font-size: 1.1rem;
+    color: $blanco;
   }
 }
 .resume-job{
   margin-top: 4rem;
   margin-bottom: 4rem;
+}
+.tag{
+  color: rgb(117, 117, 117)!important;
+  font-size: 1rem !important;
 }

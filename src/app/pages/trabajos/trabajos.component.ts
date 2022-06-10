@@ -14,13 +14,13 @@ trabajo:Array<any>=[];
 
     ) { 
 
-    this.titleAside=['Trabajos.'];
+    this.titleAside=['</Trabajos>'];
     
   }
 
   ngOnInit(): void {
       
-       this.SobreMiService.getdatos().subscribe( resp =>{
+       this.SobreMiService.getProyectos().subscribe( resp =>{
        this.trabajo=resp; 
      /*  console.log(resp); */
      
