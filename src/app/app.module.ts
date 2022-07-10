@@ -24,6 +24,7 @@ import { SkillsComponent } from './shared/skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [    
     AppComponent,
@@ -40,6 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoaderComponent,
      LoginComponent,
      SkillsComponent,
+  
     
    
   

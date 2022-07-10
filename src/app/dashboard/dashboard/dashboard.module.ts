@@ -14,7 +14,7 @@ import { SobreComponent } from '../components/sobre/sobre.component';
 import { ContactoComponent } from '../components/contacto/contacto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditModalComponent } from '../components/edit-modal/edit-modal.component';
 import { EducacionComponent } from '../components/educacion/educacion.component';
 import { InicioAdminComponent } from '../components/inicio-admin/inicio-admin.component';
@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TrabajosComponent } from '../components/trabajos/trabajos.component';
 import { HabilidadesComponent } from '../components/habilidades/habilidades.component';
 import { ProyectosComponent } from '../components/proyectos/proyectos.component';
+import { AuthInterceptorsService } from 'src/app/interceptors/auth-interceptors.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,11 @@ import { ProyectosComponent } from '../components/proyectos/proyectos.component'
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-   providers: [AdminServicesService], 
+   providers: [AdminServicesService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorsService,
+    multi: true
+  }], 
   bootstrap: [AppComponent]
 })
 export class DashboardModule { }
