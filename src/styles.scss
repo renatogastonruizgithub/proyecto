@@ -160,8 +160,7 @@ a {
     gap: 1rem;
     grid-template-columns: repeat(12, 1fr);
   }
-  .main {
-    /*  background-color: yellowgreen; */
+  .main {   
     grid-column: 3/14;
     margin-top: 19vh;
     align-items: center;
@@ -175,6 +174,26 @@ a {
   .footer {
     background-color: crimson;
     grid-column: 3/13;
+  }
+}
+
+@include laptop{
+  .main {   
+    grid-column: 3/13;
+    background-color: rgb(151, 91, 12);
+  }
+}
+@include desktop{
+  .main {   
+    grid-column: 3/12;
+  
+  }
+}
+
+@include tablet{
+  .main {   
+    grid-column: 3/13;
+    background-color: rgb(145, 222, 135);
   }
 }
 

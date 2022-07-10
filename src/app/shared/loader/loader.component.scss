@@ -12,8 +12,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 90;
-
+  z-index: 1090;
+   -webkit-animation: fadeS 6s; 
+  -moz-animation: fadeS 6s; 
+  -ms-animation: fadeS 6s; 
+  -o-animation: fadeS 6s; 
+  animation: fadeS 6s;  
   span {
     color: rgb(255, 255, 255);
     font-size: 7rem;
@@ -26,5 +30,14 @@
 @keyframes spinner4 {
   to { 
   opacity: 0;
+  } 
   }
-  }
+
+   @keyframes fadeS {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }  

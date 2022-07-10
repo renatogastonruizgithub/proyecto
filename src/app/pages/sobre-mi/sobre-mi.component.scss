@@ -1,7 +1,7 @@
 @import "../../../variables.scss";
 @import "../../../styles.scss";
 .cardSobreMi {
-  align-items: center;
+
   .cardImg {
     grid-column: 1/5;
     background-color: $negro;     
@@ -68,25 +68,18 @@
     position: relative;
   }
 }
-@keyframes mov {
-  0% {
-    left: 0;
-  }
-  50% {
-    left: -20rem;
-  }
-  100% {
-    left: 0;
-  }
-}
+
 .skills {
   margin-top: 4rem;
+  background-color: $blanco;
   .titles {
     position: relative;
-    margin-bottom: 5rem;
+    
     h3 {
       text-align: center;
       font-size: 2rem;
+      color: $negro;
+      
     }
   }
 
@@ -94,14 +87,33 @@
      display: grid;
     gap: 3rem;
     grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
-    grid-template-rows: repeat(2, 1fr);
-    margin-top: 3rem;
+    grid-template-rows: repeat(2, 1fr);  
     .wraper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
       .skill{
-        img{
-          width: 40px;
-          height: 40px;
+        figcaption{
+          color: $negro;
+          font-family: "Lato", sans-serif;
+          font-size: 1.1rem;
+        }
+        img{  
+          width: 100%;
+          max-height: 120px;    
           object-fit: cover;
+          filter: grayscale(100%);
+        }
+        progress {
+          -webkit-appearance: none;       
+          width: 100%;
+          height: 3px;
+        }
+        ::-webkit-progress-bar {
+          background-color:rgb(168, 168, 168);
+        }
+        ::-webkit-progress-value {
+          background-color: $negro;
         }
       }
     }
@@ -130,56 +142,132 @@
   }
 }
 
-@include laptop_desktop {
-  .content-skills {   
-    margin-bottom: 5rem;  
-    height: 300px;
-     gap: 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important; 
-  
-     .wraper{     
-      .skill{
-        position: relative;
-        &:hover img{
-          visibility: visible !important;
-          transition: .7s ease-in-out;
-          transform: scale(1.1);
-        }
-        img{
-          width: 30px;
-          height: 30px;
-          object-fit: cover;
+@include laptop_desktop {  
+  .resume {
+    margin-top: 8rem;
+    border: 7px solid $gris;
+    .titles {
+      margin: 3rem 0;
+      h3 {     
+        margin: auto;
+        font-size: 9rem;
+        max-inline-size: fit-content;       
+      }
+    }
+    .resume-text{
+      margin-top: 1rem;
+    }
+    .resume-item {
+      position: relative;
+     /*  border: .1px solid rgba(240, 240, 240, 0.123); */
+      padding: 1rem;
+      span{
+        &:nth-child(1){
+          content: "";
           position: absolute;
-          visibility: hidden;
-          top: -50%;
-          left: 50%;
-          transform: translate(-50%,100%);
-          transition:.5s ease-in-out;         
+          bottom: 0;
+          right:  0;
+          width: 6rem;
+          background-color: rgba(240, 240, 240, 0.459);
+          height: 1px;  
         }
-        progress {
-          -webkit-appearance: none;       
-          width: 100%;
-          height: 3px;
-        }
-        ::-webkit-progress-bar {
-          background-color:rgb(78, 78, 78);
-        }
-        ::-webkit-progress-value {
-          background-color: $blanco;
+        &:nth-child(2){
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right:  0;
+          width: 1px;
+          background-color: rgba(240, 240, 240, 0.459);
+          height: 6rem;  
         }
       }
+      &::before{
+        content: "";
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 6rem;
+        background-color: rgba(240, 240, 240, 0.459);
+        height: 1px;          
+      }      
+      &::after{
+        content: "";
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 1px;
+        background-color:rgba(240, 240, 240, 0.459);
+        height: 6rem;
+      }
+      p{
+        font-size: 1rem;
+        color: $gris;
+      }      
+      h4 {      
+        font-size: 1.4rem;
+        font-weight: 600;    
+        font-family: "Poppins", sans-serif;
+        color: $azul;
+        margin: 0 auto;      
+      }
+      h5 {      
+        background: rgba(255, 255, 255, 0.15);
+        padding: 5px 15px;
+        display: inline-block;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: $blanco;
+        margin: 1rem 0;
+      }     
+    }
+    .span{
+      font-size: 1.1rem;
+      color: $blanco;
+    }
+  }
+  .resume-job{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  .conten-resume{
+    display: grid;   
+    gap: 3rem;
+    margin: 0 2rem 5rem 2rem;
+    grid-template-rows: repeat(1fr); 
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+  .skills{
+    margin-top: 8rem;
+  }
+  .content-skills { 
+    display: grid;  
+     gap: 3rem;
+     padding: 0 2rem 5rem 2rem;
+     grid-template-rows: repeat(1fr); 
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)) !important; 
+      .wraper{  
+         .skill{
+        position: relative;
+        width: 100%;       
+        img{
+       
+          transition:.5s ease-in-out;         
+        }   
+      } 
     } 
 
   }
-  .skills { 
-    
-    .titles {      
-      h3 {       
-        color: $blanco;
-        margin: auto;
-        font-size: 4rem;
-        max-inline-size: fit-content;
+  .skills {    
+    .titles { 
+      padding: 3rem 0;     
+      h3 {
+        margin:  auto;
         
+        font-size: 9rem;
+        max-inline-size: fit-content;
+        letter-spacing: 2px;
+
       }
     }
   .cardSobreMi {
@@ -190,77 +278,4 @@
     }
   }
 }
-}
-.resume {
-  margin-top: 4rem;
-  .titles {
-    margin-bottom: 5rem;
-    h3 {
-      color: $blanco;
-      margin: auto;
-      font-size: 4rem;
-      max-inline-size: fit-content;
-     
-    }
-  }
-  .resume-item {
-    margin-bottom: 2rem;
-
-    position: relative;
-    p{
-      font-size: 1.1rem;
-      color: $gris;
-    }
-    
-    h4 {
-      line-height: 18px;
-      font-size: 18px;
-      font-weight: 600;    
-      font-family: "Poppins", sans-serif;
-      color: $blanco;
-      margin-bottom: 10px;
-    }
-    h5 {      
-      background: rgba(255, 255, 255, 0.15);
-      padding: 5px 15px;
-      display: inline-block;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: $blanco;
-      margin: 1rem 0;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    ul li {
-      padding-bottom: 10px;
-    }
-
-    &:last-child {
-      padding-bottom: 0;
-    }
-    /* &::before {
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50px;
-      left: -9px;
-      top: 0;
-      background: $blanco;
-      border: 2px solid $blanco;
-    } */
-  }
-  .span{
-    font-size: 1.1rem;
-    color: $blanco;
-  }
-}
-.resume-job{
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
-.tag{
-  color: rgb(117, 117, 117)!important;
-  font-size: 1rem !important;
 }

@@ -13,7 +13,7 @@ import { Trabajos } from '../modelo/Trabajos';
 export class AdminServicesService {
  persona:Persona;
 
-  url:string='http://localhost:8080/';
+  url:string='http://localhost:8080/api/';
 
   constructor(  private http:HttpClient) { }
  

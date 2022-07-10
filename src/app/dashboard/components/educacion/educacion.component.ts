@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Educacion } from 'src/app/modelo/Educacion';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
 import { ToastrService } from 'ngx-toastr';
+import { ModalServiceService } from 'src/app/services/modal-service.service';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -14,7 +15,7 @@ export class EducacionComponent implements OnInit {
   mostrar:boolean=false;
   formulario:FormGroup;
   visibleBtn:boolean=false;
-  constructor(private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
+  constructor(private modalServicio:ModalServiceService,private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
   {
     this.formulario=this.formBuilder.group({
       id:[''],
@@ -41,7 +42,7 @@ export class EducacionComponent implements OnInit {
         console.log(response)
       },
       error:(error:HttpErrorResponse)=>{
-       alert( error.message);
+        this.toastr.warning( error.message);
       }
     })
   }//fin refrescar

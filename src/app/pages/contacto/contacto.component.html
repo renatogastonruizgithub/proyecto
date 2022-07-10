@@ -8,12 +8,13 @@
     <section class="main">
       <h3>¿Tienes algun proyecto en mente?</h3>
       <div class="container-form">
-        <form class="form">       
+        <form class="form" (submit)="sendEmail($event)" >       
           <div class="input-container">
             <input
               class="effect-1"
               type="text"
               placeholder="Nombre"
+              name="nombre"
             />
             <span class="focus-border"></span>
           </div>
@@ -22,6 +23,7 @@
               class="effect-1"
               type="text"
               placeholder="Apellido"
+              name="apellido"
             />
             <span class="focus-border"></span>
           </div>
@@ -30,14 +32,16 @@
               class="effect-1"
               type="text"
               placeholder="Tu Email"
+              name="email"
             />
             <span class="focus-border"></span>
           </div>
           <div class="input-container">          
-            <textarea placeholder="Describe tu proyecto" class="effect-1-txt" type="textarea" rows="4" required="required"></textarea>
+            <textarea   name="mensaje" placeholder="Describe tu proyecto" class="effect-1-txt" type="textarea" rows="4" required="required"></textarea>
             <span class="focus-border-txt"></span>
           </div> 
-          <button class="butonPrimary">Enviar</button>     
+          <button type="submit" class="butonPrimary">Enviar</button>
+  
         </form>
       </div>
     </section>

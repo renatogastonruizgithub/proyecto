@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Persona } from 'src/app/modelo/Persona';
+import { ModalServiceService } from 'src/app/services/modal-service.service';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +14,7 @@ export class ModalComponent implements OnInit {
   @Output() cerrar = new EventEmitter();
   @Output() item = new EventEmitter<Object>();
  
-  constructor() { }
+  constructor( private modalServicio:ModalServiceService) { }
 
   ngOnInit(): void {
   }

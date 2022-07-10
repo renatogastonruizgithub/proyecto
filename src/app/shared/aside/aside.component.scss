@@ -71,10 +71,12 @@
     height: 100vh !important;
     display: flex;
    align-items: flex-end;
-    left: 1rem;
+    left: -1rem;
     transform: none;
     top: 0;
     position: fixed;
+    background-color:$blanco;
+  
     &::before {
       width: 2px;
       height: 40vh;
@@ -96,8 +98,12 @@
       position: relative;
       color: #ffffff;    
       letter-spacing: 1px;
-      margin:0 !important;
-    
+      margin-left: .8rem;
+      background: url('https://concepto.de/wp-content/uploads/2018/09/lenguaje-de-programaci%C3%B3n-e1537466880796-800x400.jpg');
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: contain;
+    background-position: center center;
     }
   }
  

@@ -36,7 +36,7 @@ export class HabilidadesComponent implements OnInit {
           console.log(response)
         },
         error:(error:HttpErrorResponse)=>{
-         alert( error.message);
+          this.toastr.warning( error.message);
         }
       })
     }//fin refrescar

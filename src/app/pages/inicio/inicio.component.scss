@@ -58,8 +58,22 @@ font-family: 'Anton', sans-serif;*/
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $negro;
-  &::before {
+  /* background-color: $negro; */
+  img{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1;
+    object-fit: cover;
+    width: 100%;   
+  }
+ /*  background-size: cover;
+  height: 100vh;
+  z-index: 1;
+  background: #040404 url(../../../assets/img/bg.jpg) top right no-repeat; */
+ /*  &::before {
     content: "";
     position: fixed;
     background: #040404 url(../../../assets/img/bg.jpg) top right no-repeat;
@@ -69,7 +83,7 @@ font-family: 'Anton', sans-serif;*/
     top: 0;
     height: 100vh;
     z-index: 1;
-  }
+  } */
   .heroDescription {
     z-index: 2;
     position: absolute;
@@ -185,7 +199,7 @@ font-family: 'Anton', sans-serif;*/
       transform: scaleX(-1);
       span {
         font-family: "poppins", sans-serif;
-        font-size: 3rem;
+        font-size: 4rem;
         color: $blanco;
       }
     }
@@ -256,10 +270,11 @@ font-family: 'Anton', sans-serif;*/
         border: 1px solid $blanco;
         left: 5rem;
         &:hover {
-          color: $negro;
+          color: $blanco;
           transition: 1s;
-          background-color: $blanco;
+          background-color: $azul;
           box-shadow: none;
+          border: 1px solid $azul
         }
       }
       figcaption {
@@ -268,11 +283,11 @@ font-family: 'Anton', sans-serif;*/
         text-align: initial;
         h2 {
           font-size: 1.7rem;
-          color: $blanco;
+          color: $gris;
           font-family: "Lato", sans-serif;
           display: block;
           &:nth-child(2) {
-            color: $blanco;
+            color: $gris;
             font-size: 5.5vw;
             font-family: "Lato", sans-serif;
           }
@@ -288,7 +303,7 @@ font-family: 'Anton', sans-serif;*/
         h3 {
           font-size: 5.5vw;
           color: $blanco;
-          -webkit-text-stroke: 1px $blanco;
+          -webkit-text-stroke: 1px $gris;
           -webkit-text-fill-color: transparent;
           bottom: -4rem;
           position: absolute;

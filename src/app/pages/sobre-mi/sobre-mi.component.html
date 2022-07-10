@@ -14,74 +14,71 @@
       </div>
       <div class="cardTexto">
         <h3>{{ item.tituloAbout }}</h3>
-        <p class="tag">{{ tagPOpen }}</p>
         <p>{{ item.descripion }}</p>
-        <p  class="tag">{{ tagPClose }}</p>
       </div>
     </div>
     <section class="skills">
       <div class="titles">
         <h3>{{ skill }}</h3>
       </div>
-      <section class="content-skills" >
-        <div data-speed="2" class="wraper  layer" *ngFor="let h of habilidades">
-          <div  class=" skill " >
-            <h2>{{h.nombre}}</h2>
-            <img src="../../../assets/img/irradiando.png" alt="">
-            <progress  max="100" value="{{h.numero}}"></progress>
+      <section class="content-skills">
+        <div class="wraper" *ngFor="let h of habilidades">
+          <div class="skill">
+            <figure>
+              <!-- <img  [src]="h.icono" alt=""> -->
+              <figcaption>
+                {{ h.nombre }}
+              </figcaption>
+            </figure>
+            <progress max="100" value="{{ h.numero }}"></progress>
           </div>
-        
         </div>
-      
       </section>
     </section>
-    <section class="resume">
+    <section class="resume" >
       <div class="titles">
         <h3>{{ educacion }}</h3>
       </div>
-      <div *ngFor="let item of edu">
-        <div class="resume-item">
-          <h4>{{ item.instituto }}()</h4>
-          <p>{{ tagPOpen }}</p>
+      <div class="conten-resume" >
+        <div class="resume-item"  *ngFor="let item of edu">
+          <span></span>
+          <span></span>
+          <h4>{{ item.instituto }}</h4>
           <div class="d-flex mt-1 ml-2">
-            <span class="span"> "Titulo" :</span>
             <p class="pl-1">
-              "<em>{{ item.titulo }}</em
-              >",
+              <em>{{ item.titulo }}</em>
             </p>
           </div>
-          <div class="d-flex mt-1 ml-2">
-            <span class="span">"Descripcion" :</span>
-            <p>"{{ item.info }}"</p>
+          <div class="resume-text">
+            <div class="d-flex mt-1 ml-2">
+              <p>{{ item.info }}</p>
+            </div>
+            <div class="d-flex mt-1 ml-2">
+              <i class="span">"fech de inicio" :</i>
+              <p>"{{ item.inicio | date: "dd-MM-yyyy" }}",</p>
+            </div>
+            <div class="d-flex mt-1 ml-2">
+              <i class="span">"fech de finalizacion" :</i>
+              <p>"{{ item.fin | date: "dd-MM-yyyy" }}"</p>
+            </div>
           </div>
-          <div class="d-flex mt-1 ml-2">
-            <span class="span">"fech de inicio" :</span>
-            <p>"{{ item.inicio | date: "dd-MM-yyyy" }}",</p>
-          </div>
-          <div class="d-flex mt-1 ml-2">
-            <span class="span">"fech de finalizacion" :</span>
-            <p>"{{ item.fin | date: "dd-MM-yyyy" }}"</p>
-          </div>
-
-          <p>{{ tagPClose }}</p>
         </div>
       </div>
-
-      <section class="resume-job">
-        <div class="titles">
-          <h3>{{ expe }}</h3>
-        </div>
-        <div class="resume-item" >
-          <h4>Master of Fine Arts &amp; Graphic Design</h4>
-          <h5>2015 - 2016</h5>
-          <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-          <p>
-            Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam
-            iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti
-            nerada porti sand markend
-          </p>
-        </div>
-      </section>
+    </section>
+    <section class="resume-job">
+      <div class="titles">
+        <h3>{{ expe }}</h3>
+      </div>
+      <div class="resume-item">
+        <h4>Master of Fine Arts &amp; Graphic Design</h4>
+        <h5>2015 - 2016</h5>
+        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+        <p>
+          Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam
+          iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti
+          nerada porti sand markend
+        </p>
+      </div>
     </section>
     <app-footer></app-footer>
   </main>

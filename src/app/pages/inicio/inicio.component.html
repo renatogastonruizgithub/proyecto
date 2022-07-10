@@ -18,18 +18,19 @@
       </div>
     </div>
     <div class="d-flex direciones">
-      <a  routerLink="/admin" routerLinkActive="active">login</a>
+      <a  routerLink="/login" routerLinkActive="active">login</a>
       <a  routerLink="/contacto" routerLinkActive="active">Contactame</a>
     </div>
  
   </nav>
 </header>
-<section class="hero container-fluid">
+<section  class="hero container-fluid"  *ngFor="let i of home" >
+  <img [src]="i.imgBanner" alt="">
   <div class="heroDescription">
-    <figcaption>
-      <h2 data-speed="1" class="layer">Soy Renato Ruiz</h2>
-      <h1 data-speed="2" class="layer">Desarrollador web</h1>
-      <h3 data-speed="3" class="layer">full stack</h3>
+    <figcaption *ngFor="let item of home">
+      <h2 data-speed="1" class="layer">Soy {{item.nombre}} {{item.apellido}}</h2>
+      <h1 data-speed="2" class="layer">{{item.ocupacion}}</h1>
+      <h3 data-speed="3" class="layer">{{item.stack}}</h3>
       <button class="buton" (click)="modal.openModal()">Empezemos</button>
     </figcaption>
   </div>

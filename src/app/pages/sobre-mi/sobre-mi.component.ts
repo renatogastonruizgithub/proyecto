@@ -13,11 +13,9 @@ declare function parallaxHero():void;
 })
 export class SobreMiComponent implements OnInit {
  titleAside:string[];
-  expe:string="</Experiencia laboral>";
-  educacion:string="</Educacion>";
-  skill:string="</Habilidades>";
-  tagPOpen:string="<p>";
-  tagPClose:string="</p>";
+  expe:string="Trabajos";
+  educacion:string="Educacion";
+  skill:string="Habilidades";
   sobre:Persona[];
   habilidades:Habilidadas[];
   trabajos:Trabajos[];

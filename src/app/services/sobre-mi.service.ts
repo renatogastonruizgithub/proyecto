@@ -14,10 +14,23 @@ import { Proyectos } from '../modelo/Proyectos';
   providedIn: 'root'
 })
 export class SobreMiService {
-  url:string='http://localhost:8080/';
+  url:string='http://localhost:8080/api/';
 
   constructor(  private http:HttpClient,    public loader:CargaLoaderService  ) { 
   }
+
+  getHome():Observable<any>{
+    this.loader.showLoader();
+    return this.http.get(this.url+"home").pipe(
+      map(r =>{
+        this.loader.slowLoader();
+        return r
+      })
+    );   
+  }
+
+
+
     getdatos():Observable<any>{
       this.loader.showLoader();
       return this.http.get('http://localhost:3000/trabajos').pipe(
@@ -25,8 +38,7 @@ export class SobreMiService {
           this.loader.slowLoader();
           return r
         })
-      );
-    
+      );    
     }
   getsobre():Observable<any>{
        this.loader.showLoader();
