@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModalComponent } from 'src/app/dashboard/components/modal/modal.component';
+import { GuardsDashboardGuard } from 'src/app/guards/guards-dashboard.guard';
 import { ContactoComponent } from '../components/contacto/contacto.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { EducacionComponent } from '../components/educacion/educacion.component';
@@ -15,7 +16,7 @@ import { UsuariosComponent } from '../components/usuarios/usuarios.component';
 
 const routes: Routes = [ 
   
-  {path:'',component:DashboardComponent, 
+  {path:'',component:DashboardComponent, canActivate:[GuardsDashboardGuard],
   
   children:[ 
     {path:'',component:InicioAdminComponent},

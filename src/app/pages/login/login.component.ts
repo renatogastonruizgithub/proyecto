@@ -56,7 +56,7 @@ login(){
       this.tokenService.setUserName(jwt.username);
       this.tokenService.setAuthorities(jwt.authorities);
       this.roles=jwt.authorities; 
-      this.toastr.success("Inicio de secion con exito"+jwt.username)
+      this.toastr.success("Inicio de secion con exito "+jwt.username)
       this.router.navigate(['/admin']); 
     },
     error:(error:HttpErrorResponse)=>{
