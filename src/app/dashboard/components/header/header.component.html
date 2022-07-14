@@ -8,10 +8,10 @@
   </div>
   <!-- End Logo -->
 
-  <nav class="header-nav ms-auto">
-    <ul class="d-flex align-items-center">
-      <li *ngIf="isLogged"><i class="bi bi-box-arrow-right"></i> <span (click)="onLogOut()">Cerrar sesion</span></li>
-      <li class=""><i class="bi bi-person"></i> <span>{{user}}</span></li>
+  <nav class="header-nav ms-auto ">
+    <ul class="d-flex align-items-center sidebar-nav">
+      <li  class="nav-link collapsed" *ngIf="isLogged"><i class="bi bi-box-arrow-right"></i> <span  (click)="onLogOut()">Cerrar sesion</span></li>
+      <li class="nav-link collapsed"><i class="bi bi-person"></i> <span>{{user}}</span></li>
     </ul>
   </nav>
   <!-- End Icons Navigation -->
