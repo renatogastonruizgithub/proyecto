@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 const TOKEN = 'AuthToken';
-const USERNAME = 'AuthUserName';
-const AUTHORITIES = 'AuthAuthorities';
 
 
 @Injectable({
@@ -11,7 +10,7 @@ const AUTHORITIES = 'AuthAuthorities';
 export class TokenService {
  
   roles: Array<string> = [];
-  constructor() { }
+  constructor( private router: Router) { }
 //guardo las constantes en la sessionStorage del navegador
 
 //metodo para guardar el token   
@@ -24,34 +23,45 @@ public getToken(){
   return sessionStorage.getItem(TOKEN);
 }
 
-public setUserName(userName: string): void {
-  window.sessionStorage.removeItem(USERNAME);
-  window.sessionStorage.setItem(USERNAME, userName);
-}
-public getUserName() {
-  return sessionStorage.getItem(USERNAME);
-}
-
-public setAuthorities(authorities: string[]): void {
-  window.sessionStorage.removeItem(AUTHORITIES);
-  window.sessionStorage.setItem(AUTHORITIES, JSON.stringify(authorities));
-}
-
-public getAuthorities(): string[] {
-  this.roles = [] ;
-  if (sessionStorage.getItem(AUTHORITIES)) {
-    //por si llega vacio 
-    JSON.parse(sessionStorage.getItem(AUTHORITIES) || "[]").forEach((authority: { authority: string; })  => {
-      
-      this.roles.push(authority.authority);
-    });
+public isLogged(): boolean {
+  if (this.getToken()) {
+    return true;
   }
-  return this.roles;
+  return false;
+}
+
+public getUserName(): string {
+  if (!this.isLogged()) {
+    return null!;
+  }
+  const token = this.getToken();
+  const payload = token!.split('.')[1];
+  const payloadDecoded = atob(payload);
+  const values = JSON.parse(payloadDecoded);
+  const username = values.sub;
+  return username;
+}
+
+public isAdmin(): boolean {
+  if (!this.isLogged()) {
+    return false;
+  }
+  const token = this.getToken();
+  const payload = token!.split('.')[1];
+  const payloadDecoded = atob(payload);
+  const values = JSON.parse(payloadDecoded);
+  const roles = values.roles;
+  if (roles.indexOf('ROLE_ADMIN') < 0) {
+    return false;
+  }
+  return true;
 }
 
 public logOut(): void {
   window.sessionStorage.clear();
+  this.router.navigate(['/login']);
 }
+
 
 
 
@@ -62,8 +72,4 @@ public logOut(): void {
 
 
 }//fin
-
-function forEach(arg0: (authority: any) => void) {
-  throw new Error('Function not implemented.');
-}
 

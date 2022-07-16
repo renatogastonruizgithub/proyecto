@@ -15,7 +15,7 @@ export class GuardsDashboardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let user = this.tokenService.getToken();
+    let user = this.tokenService.isLogged();
     if (user) {
       return true;
     }

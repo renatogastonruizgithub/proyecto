@@ -13,10 +13,10 @@ export class CargaLoaderService {
     hideLoader(){
     this.isSpinnerVisible=false;
   }
-  slowLoader(t:number=1000){
+   slowLoader(t:number=1000){
     setTimeout(()=>{
       this.hideLoader()
     },t)
-  }
+  } 
    
 }

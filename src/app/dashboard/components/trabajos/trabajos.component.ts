@@ -38,7 +38,7 @@ export class TrabajosComponent implements OnInit {
         console.log(response)
       },
       error:(error:HttpErrorResponse)=>{
-        this.toastr.warning( error.message);
+        this.toastr.warning( error.error.mensaje);
       }
     })
   }//fin refrescar
@@ -66,7 +66,7 @@ export class TrabajosComponent implements OnInit {
             this.toastr.success("se creo con exito");   
           },
           error:(error:HttpErrorResponse)=>{
-            this.toastr.warning(error.message); 
+            this.toastr.warning(error.error.mensaje); 
           }            
         })
             
@@ -97,7 +97,7 @@ export class TrabajosComponent implements OnInit {
           
         },
         error:(error:HttpErrorResponse)=>{        
-          this.toastr.warning(error.message);
+          this.toastr.warning(error.error.mensaje); 
         }
       })
     }
@@ -113,7 +113,7 @@ export class TrabajosComponent implements OnInit {
           },
           error:(error:HttpErrorResponse)=>{
            
-            this.toastr.warning(error.message);
+            this.toastr.warning(error.error.mensaje); 
           }
         })
       }

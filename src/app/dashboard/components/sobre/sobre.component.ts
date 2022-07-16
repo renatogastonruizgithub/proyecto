@@ -86,8 +86,7 @@ export class SobreComponent implements OnInit {
    this.Ediformulario.setValue({
     id:personas.id,
      nombre:personas.nombre,
-      apellido:personas.apellido,
-   
+      apellido:personas.apellido,   
     nacimiento:personas.nacimiento, 
     ocupacion:personas.ocupacion, 
     stack:personas.stack, 

@@ -29,13 +29,11 @@ export class InicioAdminComponent implements OnInit {
 
 
   hasRole():void{
-let roles = this.tokenService.getAuthorities();
+let roles = this.tokenService.isAdmin();
    this.realRol = 'user';
-    roles.forEach(rol => {
-      if (rol === 'ROLE_ADMIN') {
-        this.realRol = 'admin';
-      }
-    });
+   if (roles) {
+    this.realRol = 'admin';
+  }
   }
 }
 

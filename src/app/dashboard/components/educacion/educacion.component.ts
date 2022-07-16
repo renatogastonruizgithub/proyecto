@@ -70,7 +70,7 @@ export class EducacionComponent implements OnInit {
           this.toastr.success("se creo con exito");   
         },
         error:(error:HttpErrorResponse)=>{
-          this.toastr.warning(error.message); 
+          this.toastr.warning(error.error.mensaje); 
         }            
       })
           

@@ -23,19 +23,28 @@
                 <form class="row g-3 needs-validation" [formGroup]="formulario" (ngSubmit)="login()" novalidate>
                   <div class="col-12">
                     <label for="yourUsername"   class="form-label">Username</label>
-                    <div class="input-group has-validation"> 
-                      <input type="text" formControlName="usernameOrEmail"  class="form-control" id="yourUsername" >
-                      <div class="invalid-feedback">Please enter your username.</div>
+                    <input type="text" formControlName="usernameOrEmail"  class="form-control" id="yourUsername" ><div class="input-group has-validation"> 
+                      
+                      <div  *ngIf="usuario?.errors && usuario?.touched">                  
+                        <p *ngIf="usuario?.hasError('required')" class="alert-danger">
+                          ingrese su usuario!
+                        </p>
+                      </div>
                     </div>
                   </div>
 
                   <div class="col-12">
                     <label for="yourPassword" class="form-label">Password</label>
-                    <input type="password" formControlName="password" class="form-control" id="yourPassword" >
-                    <div class="invalid-feedback">Please enter your password!</div>
+                    <input type="password" formControlName="password" class="form-control has-validation"  >
+                    <div *ngIf="passwords?.errors && passwords?.touched">                  
+                      <p *ngIf="passwords?.hasError('required')" class="alert-danger">
+                        ingrese su password!
+                      </p>
+                    </div>
                   </div>
                   <div class="col-12">
-                    <button class="btn btn-primary w-100" type="submit">Iniciar sesion</button>
+                    <button class="btn btn-outline-primary w-100" type="submit">Iniciar sesion</button>
+                    <button class="btn btn-primary w-100 mt-5" routerLink="/registro" routerLinkActive="active" >Registrarse</button>
                   </div>
                 </form>
 
@@ -45,7 +54,8 @@
           </div>
         </div>
       </div>
-
     </section>
 
-  </div>
+</div>
+
+ 

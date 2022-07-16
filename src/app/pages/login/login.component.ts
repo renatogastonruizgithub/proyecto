@@ -16,12 +16,11 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent implements OnInit {
   formulario:FormGroup;
-  isLogged = false;
-  isLoginFail = false;
+ 
   loginUsuario: Login;
   nombreUsuario: string;
   password: string;
-  roles: string[] = [];
+ 
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
@@ -39,31 +38,33 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-      this.isLoginFail = false;
-      this.roles = this.tokenService.getAuthorities();
-    }
+  
   }
 
-login(){
-  
-  this.authService.login(this.formulario.value).subscribe( {
-    next:(jwt:Jwt)=>{
-      console.log(this.formulario.value)
-      this.isLogged = true;
-      this.tokenService.setToken(jwt.tokenDeAcceso);
-      this.tokenService.setUserName(jwt.username);
-      this.tokenService.setAuthorities(jwt.authorities);
-      this.roles=jwt.authorities; 
-      this.toastr.success("Inicio de secion con exito "+jwt.username)
-      this.router.navigate(['/admin']); 
-    },
-    error:(error:HttpErrorResponse)=>{
-      this.isLogged = false;
-      this.toastr.warning(error.message)
-    }
-  })
+  get usuario(){
+    return this.formulario.get('usernameOrEmail');
+  }
+  get passwords(){
+    return this.formulario.get('password');
+  }
+
+
+login(){ 
+  this.formulario.markAllAsTouched(); 
+  if(this.formulario.valid){
+    this.authService.login(this.formulario.value).subscribe( {
+      next:(jwt:Jwt)=>{           
+        this.tokenService.setToken(jwt.tokenDeAcceso);       
+        this.toastr.success("Inicio de sesion con exito ")
+        this.router.navigate(['/admin']); 
+      },
+      error:(error:HttpErrorResponse)=>{       
+        this.toastr.warning("Usuario o contraseña no coinciden")
+       
+      }
+    })
+  }
+ 
   
 
 }
