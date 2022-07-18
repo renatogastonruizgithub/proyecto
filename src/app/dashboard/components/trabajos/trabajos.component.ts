@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Trabajos } from 'src/app/modelo/Trabajos';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -15,7 +16,8 @@ export class TrabajosComponent implements OnInit {
   mostrar:boolean=false;
   formulario:FormGroup;
   visibleBtn:boolean=false;
-  constructor(private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder) 
+  realRol: string;
+  constructor(private tokenService:TokenService,private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder) 
   {
     this.formulario=this.formBuilder.group({
       id:[''],
@@ -29,7 +31,15 @@ export class TrabajosComponent implements OnInit {
 
   ngOnInit(): void {
     this.refrescar();
+    this.hasRole();
   }
+  hasRole():void{
+    let roles = this.tokenService.isAdmin();
+       this.realRol = 'user';
+       if (roles) {
+        this.realRol = 'admin';
+      }
+      }
 
   refrescar():void {
     this.servicio.getTrabajos().subscribe({

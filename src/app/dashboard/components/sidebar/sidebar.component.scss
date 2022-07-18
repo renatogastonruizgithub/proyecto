@@ -16,9 +16,9 @@
     background-color: #fff;
   }
   @media (max-width: 1199px) {
-    .sidebar {
+   /*  .sidebar {
       left: -300px;
-    }
+    } */
   }
   .sidebar::-webkit-scrollbar {
     width: 5px;
@@ -35,9 +35,9 @@
     }
   }
   @media (max-width: 1199px) {
-    .toggle-sidebar .sidebar {
+     .toggle-sidebar .sidebar {
       left: 0;
-    }
+    } 
   }
   @media (min-width: 1200px) {
     .toggle-sidebar #main, .toggle-sidebar #footer {

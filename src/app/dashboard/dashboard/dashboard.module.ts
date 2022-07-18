@@ -23,6 +23,7 @@ import { TrabajosComponent } from '../components/trabajos/trabajos.component';
 import { HabilidadesComponent } from '../components/habilidades/habilidades.component';
 import { ProyectosComponent } from '../components/proyectos/proyectos.component';
 import { AuthInterceptorsService } from 'src/app/interceptors/auth-interceptors.service';
+import { LoaderDashboardComponent } from '../components/loader-dashboard/loader-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthInterceptorsService } from 'src/app/interceptors/auth-interceptors.
     InicioAdminComponent,
     TrabajosComponent,
     HabilidadesComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    LoaderDashboardComponent
    ],
   imports: [
     CommonModule,
@@ -48,7 +50,11 @@ import { AuthInterceptorsService } from 'src/app/interceptors/auth-interceptors.
     ReactiveFormsModule,
     
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(  {
+      timeOut: 2000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }),
   ],
    providers: [AdminServicesService, {
     provide: HTTP_INTERCEPTORS,

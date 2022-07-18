@@ -5,6 +5,8 @@ import { Educacion } from 'src/app/modelo/Educacion';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { ModalServiceService } from 'src/app/services/modal-service.service';
+import { TokenService } from 'src/app/services/token.service';
+import { LoaderDashboardService } from 'src/app/services/loader-dashboard.service';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -15,7 +17,8 @@ export class EducacionComponent implements OnInit {
   mostrar:boolean=false;
   formulario:FormGroup;
   visibleBtn:boolean=false;
-  constructor(private modalServicio:ModalServiceService,private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
+  realRol: string;
+  constructor(private load:LoaderDashboardService,private tokenService: TokenService,private modalServicio:ModalServiceService,private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder ) 
   {
     this.formulario=this.formBuilder.group({
       id:[''],
@@ -33,12 +36,21 @@ export class EducacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.refrescar();
+    this.hasRole();
   }
-
+  hasRole():void{
+    let roles = this.tokenService.isAdmin();
+       this.realRol = 'user';
+       if (roles) {
+        this.realRol = 'admin';
+      }
+      }
   refrescar():void {
+    this.load.showLoader();
     this.servicio.getEducacion().subscribe({
       next:(response:Educacion[] )=>{
         this.educaciones=response;
+        this.load.hideLoader();
         console.log(response)
       },
       error:(error:HttpErrorResponse)=>{

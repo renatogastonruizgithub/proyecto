@@ -6,7 +6,7 @@
         <h3 class="text-dark mb-0">Datos sobre tu habilidades</h3>
       
         <button  
-   
+        *ngIf="realRol === 'admin'"
           data-bs-toggle="modal"
           class="d-flex flex-column btn btn-primary"
           type="button"
@@ -45,7 +45,7 @@
               </div>
               <ul>
                 
-                <div class="d-flex mt-3 w-20 justify-content-evenly">
+                <div  *ngIf="realRol === 'admin'" class="d-flex mt-3 w-20 justify-content-evenly">
                   <button (click)="openEditar(item)" type="button" class="btn btn-warning">Editar</button>
                   
                   <button (click)="eliminar(item)" type="button" class="btn btn-danger">Eliminar</button>
@@ -126,5 +126,5 @@
         </div>
     </div>
     </div>
-  </div>
+</div>
   

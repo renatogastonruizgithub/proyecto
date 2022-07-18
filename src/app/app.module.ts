@@ -24,6 +24,7 @@ import { SkillsComponent } from './shared/skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { RegistrarseComponent } from './pages/registrarse/registrarse.component';
+import { RegisterOkComponent } from './pages/register-ok/register-ok.component';
 
 
 @NgModule({
@@ -43,10 +44,8 @@ import { RegistrarseComponent } from './pages/registrarse/registrarse.component'
      LoginComponent,
      SkillsComponent,
      RegistrarseComponent,
-  
+     RegisterOkComponent,
     
-   
-  
   ],
   imports: [
     BrowserModule,
@@ -55,7 +54,13 @@ import { RegistrarseComponent } from './pages/registrarse/registrarse.component'
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,    
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(
+    {
+      timeOut: 2000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }
+    ),
     NgCircleProgressModule.forRoot({    
     })
   ],

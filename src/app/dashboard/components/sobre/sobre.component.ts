@@ -8,6 +8,8 @@ import { AdminServicesService } from 'src/app/services/admin-services.service';
 import { ModalComponent } from 'src/app/dashboard/components/modal/modal.component';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
+import { TokenService } from 'src/app/services/token.service';
+import { LoaderDashboardService } from 'src/app/services/loader-dashboard.service';
 
 
 @Component({
@@ -24,11 +26,12 @@ export class SobreComponent implements OnInit {
   validar= false;
   id: number;
   @Output() item = new EventEmitter();
+  realRol: string;
   
   /* @Output() editarOpen = new EventEmitter();  */
  
 
-  constructor( private router:Router,private formBuilder:FormBuilder, private servicio:AdminServicesService) { 
+  constructor(private load:LoaderDashboardService ,private tokenService:TokenService, private router:Router,private formBuilder:FormBuilder, private servicio:AdminServicesService) { 
 
      this.formulario=this.formBuilder.group({
        id:[''],
@@ -70,15 +73,24 @@ export class SobreComponent implements OnInit {
 
   ngOnInit(): void {
  this.actualizar();
-    
+    this.hasRole();
   }
   
+  hasRole():void{
+    let roles = this.tokenService.isAdmin();
+       this.realRol = 'user';
+       if (roles) {
+        this.realRol = 'admin';
+      }
+      }
+
   actualizar(){
+    this.load.showLoader();
     this.servicio.getPersona().subscribe(data=>{
       this.personas=data;
+      this.load.hideLoader();
       console.log(data); 
-      })
-      
+      })      
   }
  
   openEdit(personas:Persona){

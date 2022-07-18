@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row mb-3 ">
-    <div
+    <div class="col-12">
+       <div
       class="card-header mb-3 d-flex align-items-center justify-content-evenly"
     >
       <h3 class="text-dark mb-0">Datos sobre tu educaciones</h3>
     
       <button  
- 
+      *ngIf="realRol === 'admin'"
         data-bs-toggle="modal"
         class="d-flex flex-column btn btn-primary"
         type="button"
@@ -16,17 +17,22 @@
         Nuevo
       </button>
     </div>
+    </div>
+   
   </div>
-  <ng-template #valid>
-    <div class="row">
-        <div class="col-md-6 align-items-center">
+ <ng-template #valid >
+  
+    <div class="row">      
+      
+        <div class="col-md-12 align-items-center">          
           <div class="card shadow rounded">
-            <h4 class="text-dark">Por favor ingrese sus educaciones</h4> 
+            <app-loader-dashboard></app-loader-dashboard>            
+           <h3 class="text-dark">Por favor ingrese sus educaciones</h3>
           </div>
         </div>
     </div>
-    
-   </ng-template>
+  </ng-template>
+  
  
   <div class="row" *ngIf="educaciones?.length; else valid">
     
@@ -51,7 +57,7 @@
             </div>
             <ul>
               
-              <div class="d-flex mt-3 w-20 justify-content-evenly">
+              <div  *ngIf="realRol === 'admin'" class="d-flex mt-3 w-20 justify-content-evenly">
                 <button (click)="openEditar(item)" type="button" class="btn btn-warning">Editar</button>
                 
                 <button (click)="eliminar(item)" type="button" class="btn btn-danger">Eliminar</button>

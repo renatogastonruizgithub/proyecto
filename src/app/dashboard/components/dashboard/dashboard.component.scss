@@ -1,26 +1,29 @@
-/*html >.main-dashboard{
-background-color:rgb(143, 118, 118) !important;
- height: 100vh !important;    
-}*/
+
+@import "../../../../variables.scss"; 
 html,body{
  
   height: 100vh!important;
 }
-.main-dashboard{
- 
-  /* height: 100vh !important;   */
+.main-dashboard{ 
   p{
     color: black !important;
   }
-  .section-dashboard{
-    
-    
-   width: 80%;
+  .section-dashboard{   
+   width: 100%;
    height: max-content;  
-   margin-left: 20%;
-   padding-top: 10vh;
+  /*  margin-left: 20%; */
+   padding-top: 15vh;
         p{
           color: black!important;
         }
   }
+/*   @include laptop_desktop {
+    .section-dashboard{ 
+      width: 0%;
+      margin-left: 20%;
+
+  
+    }
+  } */
+
 }

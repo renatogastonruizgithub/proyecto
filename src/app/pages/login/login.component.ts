@@ -15,11 +15,7 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  formulario:FormGroup;
- 
-  loginUsuario: Login;
-  nombreUsuario: string;
-  password: string;
+  formulario:FormGroup; 
  
   constructor(
     private tokenService: TokenService,

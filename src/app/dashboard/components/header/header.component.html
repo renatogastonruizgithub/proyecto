@@ -1,19 +1,66 @@
-<header id="header" class="header fixed-top d-flex align-items-center">
-  <div class="d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo d-flex align-items-center">
-      <img src="assets/img/logo.png" alt="" />
-      <span class="d-none d-lg-block">Portafolio admin</span>
-    </a>
-    <i class="bi bi-list toggle-sidebar-btn"></i>
-  </div>
-  <!-- End Logo -->
 
+<header id="header" class="header fixed-top d-flex align-items-center">
+  <div class="container d-flex align-items-center ">
+ <div class="d-flex logo align-items-center justify-content-between">
+     
+      <span class=" d-none d-lg-block navbar-brand">Portafolio admin</span>
+   
+    <i class="bi bi-list toggle-sidebar-btn" (click)="side.openSider()"></i>
+  </div>
   <nav class="header-nav ms-auto ">
-    <ul class="d-flex align-items-center sidebar-nav">
-      <li  class="nav-link collapsed" *ngIf="isLogged"><i class="bi bi-box-arrow-right"></i> <span  (click)="onLogOut()">Cerrar sesion</span></li>
-      <li class="nav-link collapsed"><i class="bi bi-person"></i> <span>{{user}}</span></li>
+    <ul class="d-flex align-items-center sidebar-nav">      
+      <li class="nav-item ocultar ">
+        <a class="nav-link collapsed" routerLink="home" routerLinkActive="active">
+          <i class="bi bi-person"></i>
+          <span>Home</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item ocultar">
+        <a class="nav-link collapsed" routerLink="sobre" routerLinkActive="active">
+          <i class="bi bi-question-circle"></i>
+          <span>Sobre mi</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item ocultar">
+        <a class="nav-link collapsed" routerLink="educacion" routerLinkActive="active">
+          <i class="bi bi-card-list"></i>
+          <span>Educacion</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+      <li class="nav-item ocultar">
+        <a class="nav-link collapsed" routerLink="trabajos" routerLinkActive="active">
+          <i class="bi bi-envelope"></i>
+          <span>Trabajos</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      <li class="nav-item ocultar">
+        <a class="nav-link collapsed" routerLink="habilidades" routerLinkActive="active">
+          <i class="bi bi-envelope"></i>
+          <span>Habilidades</span>
+        </a>
+      </li>
+      <li class="nav-item ocultar">
+        <a class="nav-link collapsed" routerLink="proyectos" routerLinkActive="active">
+          <i class="bi bi-envelope"></i>
+          <span>Proyectos</span>
+        </a>
+      </li>
+    <!--   <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="usuarios" routerLinkActive="active">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Usuarios</span>
+        </a>
+      </li> -->
+      <li  class="nav-link " *ngIf="isLogged"> <button type="button" (click)="onLogOut()" class="btn btn-secondary btn-sm "><i class="bi bi-box-arrow-right"></i>Cerrar sesion</button> </li>
+      <li class="nav-link "><i class="bi bi-person"></i> <span class="user">{{user}}</span></li>
     </ul>
+  
   </nav>
-  <!-- End Icons Navigation -->
+  </div>
+ 
+ 
 </header>
-<!-- End Header -->
+
+<app-sidebar #side ></app-sidebar>

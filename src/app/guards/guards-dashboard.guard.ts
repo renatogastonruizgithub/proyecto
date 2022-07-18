@@ -22,7 +22,6 @@ export class GuardsDashboardGuard implements CanActivate {
     else{
       this.toastr.warning("necesitar permisos para acceder")
       this.router.navigate(["/login"]);
-
       return false;
     }
 
