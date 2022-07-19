@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Proyectos } from 'src/app/modelo/Proyectos';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
+import { LoaderDashboardService } from 'src/app/services/loader-dashboard.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class ProyectosComponent implements OnInit {
   formulario:FormGroup;
   visibleBtn:boolean=false;
   realRol: string;
-  constructor(private tokenService:TokenService,private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder) 
+  constructor(private load:LoaderDashboardService,
+    private tokenService:TokenService,private toastr: ToastrService,private servicio:AdminServicesService ,private formBuilder:FormBuilder) 
   {
     this.formulario=this.formBuilder.group({
       id:[''],
@@ -41,9 +43,12 @@ export class ProyectosComponent implements OnInit {
       }
       }
   refrescar():void {
+    this.load.showLoader();
     this.servicio.getProyectos().subscribe({
       next:(response:Proyectos[] )=>{
         this.proyectos=response;
+        this.load.hideLoader();
+
         console.log(response)
       },
       error:(error:HttpErrorResponse)=>{
@@ -64,7 +69,8 @@ export class ProyectosComponent implements OnInit {
   
   
     guardar()
-    {
+    { 
+      this.formulario.markAllAsTouched();
       if(this.formulario.valid) {
         this.servicio.crearProyec(this.formulario.value).subscribe({
   
@@ -81,7 +87,7 @@ export class ProyectosComponent implements OnInit {
             
       } 
       else{
-        alert("campos vacios");
+        this.toastr.warning("campos vacios"); 
       }
     }
 
@@ -96,18 +102,21 @@ export class ProyectosComponent implements OnInit {
     }
 
     actualizar(){
-      this.servicio.editarProyec(this.formulario.value).subscribe({
-        next:(response:Proyectos)=>{
-          this.refrescar(); 
-          this.formulario.reset();
-          this.cerrarModal();  
-          this.toastr.success("se actualizo con exito");
-          
-        },
-        error:(error:HttpErrorResponse)=>{        
-          this.toastr.warning(error.message);
-        }
-      })
+      if(this.formulario.valid){
+        this.servicio.editarProyec(this.formulario.value).subscribe({
+          next:(response:Proyectos)=>{
+            this.refrescar(); 
+            this.formulario.reset();
+            this.cerrarModal();  
+            this.toastr.success("se actualizo con exito");
+            
+          },
+          error:(error:HttpErrorResponse)=>{        
+            this.toastr.warning(error.message);
+          }
+        })
+      }
+     
     }
 
 
@@ -126,6 +135,18 @@ export class ProyectosComponent implements OnInit {
         })
       }
     }
+
+    get  nombre(){
+      return this.formulario.get('nombre');
+    }
+    get  imagen(){
+      return this.formulario.get('imagen');
+    }
+    get  descripcion(){
+      return this.formulario.get('descripcion');
+    }
+  
+
 
 
 }

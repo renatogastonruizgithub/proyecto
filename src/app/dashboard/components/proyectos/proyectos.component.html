@@ -1,6 +1,7 @@
-<div class="container">
+
     <div class="row mb-3 ">
-      <div
+      <div class="col-12">
+        <div
         class="card-header mb-3 d-flex align-items-center justify-content-evenly"
       >
         <h3 class="text-dark mb-0">Datos sobre tus proyectos</h3>
@@ -15,16 +16,16 @@
           Nuevo
         </button>
       </div>
+      </div>
+      
     </div>
-    <ng-template #valid>
-      <div class="row">
-          <div class="col-md-6 align-items-center">
+    <ng-template #valid>     
+          <div class="col-12 align-items-center">
             <div class="card shadow rounded">
+              <app-loader-dashboard></app-loader-dashboard>  
               <h4 class="text-dark">Por favor ingrese sus proyectos</h4> 
             </div>
           </div>
-      </div>
-      
      </ng-template>
    
     <div class="row" *ngIf="proyectos?.length; else valid">
@@ -57,13 +58,16 @@
         </div>
       </div>
     </div>   
-</div>
+
   
 <div *ngIf="mostrar"  class="modal " tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title">f</h5>
+          <ng-template #valido>          
+            <h2 class="text-dark">Actualiza tus datos</h2>
+          </ng-template>
+        <h2  *ngIf="!visibleBtn;else valido" class="modal-title text-dark">Guardar</h2>
         <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body ">               
@@ -77,7 +81,7 @@
               id="floatingInput"
             />
             <label for="floatingInput">Nombre del proyecto</label>
-        <!--  <p *ngIf="apellido?.hasError('required')&& apellido?.touched" class="alert-danger">falta apellido</p>  -->
+            <p *ngIf="nombre?.hasError('required')&& nombre?.touched" class="alert-danger">falta proyecto</p>  
           </div>
           <div class="form-floating input-group-sm mb-3">
             <input 
@@ -87,7 +91,7 @@
               id="floatingInput"
             />
             <label for="floatingInput">Imagen del proyecto</label>
-        <!--  <p *ngIf="apellido?.hasError('required')&& apellido?.touched" class="alert-danger">falta apellido</p>  -->
+              <p *ngIf="imagen?.hasError('required')&& imagen?.touched" class="alert-danger">falta Imagen</p>
           </div>
           <div class="form-floating input-group-sm mb-3">
             <textarea    
@@ -97,7 +101,7 @@
             id="floatingInput">     
             </textarea>
             <label for="floatingInput">Descripion del proyecto</label> 
-           <!--  <p *ngIf="descripion?.hasError('required')&& descripion?.touched" class="alert-danger">falta descripion</p> -->         
+           <p *ngIf="descripcion?.hasError('required')&& descripcion?.touched" class="alert-danger">falta descripion</p>         
           </div>
        
          </form>

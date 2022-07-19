@@ -50,8 +50,7 @@ export class EducacionComponent implements OnInit {
     this.servicio.getEducacion().subscribe({
       next:(response:Educacion[] )=>{
         this.educaciones=response;
-        this.load.hideLoader();
-        console.log(response)
+        this.load.hideLoader();     
       },
       error:(error:HttpErrorResponse)=>{
         this.toastr.warning( error.message);
@@ -71,7 +70,7 @@ export class EducacionComponent implements OnInit {
 
 
   guardar()
-  {
+  {  this.formulario.markAllAsTouched(); 
     if(this.formulario.valid) {
       this.servicio.crearEducacion(this.formulario.value).subscribe({
 
@@ -87,13 +86,13 @@ export class EducacionComponent implements OnInit {
       })
           
     } 
-    else{
-      alert("campos vacios"); 
-
+    else{    
+      this.toastr.warning("campos vacios"); 
     }
   }
 
   openEditar(item:any){
+    this.formulario.markAllAsTouched(); 
     this.openModal();
     this.visibleBtn=true;
     this.formulario.controls['id'].setValue(item.id); 
@@ -105,28 +104,34 @@ export class EducacionComponent implements OnInit {
   }
 
   actualizar(){
-    this.servicio.actualizarEducacion(this.formulario.value).subscribe({
-      next:(response:Educacion)=>{
-        this.refrescar(); 
-        this.formulario.reset();
-        this.cerrarModal();  
-        this.toastr.success("se actualizo con exito");
-        
-      },
-      error:(error:HttpErrorResponse)=>{        
-        this.toastr.warning(error.message);
-      }
-    })
+    if(this.formulario.valid){
+      this.servicio.actualizarEducacion(this.formulario.value).subscribe({
+        next:(response:Educacion)=>{
+          this.refrescar(); 
+          this.formulario.reset();
+          this.cerrarModal();  
+          this.toastr.success("se actualizo con exito");
+          
+        },
+        error:(error:HttpErrorResponse)=>{        
+          this.toastr.warning(error.message);
+          console.log(error.message)
+        }
+      })
+    }
+   
   }
 
 
 
-  eliminar(item:any){
+  eliminar(item:any){  
     if(confirm("¿Desea eliminar el registro?")){
       this.servicio.eliminarEducacion(item.id).subscribe({
         next:(response:Educacion)=>{ 
           this.refrescar(); 
-          this.toastr.success('se elimino con exito');         
+          this.toastr.success('se elimino con exito <button (click)="alert()"></button>','ok',{
+            enableHtml :  true
+          });         
         },
         error:(error:HttpErrorResponse)=>{
          
@@ -137,8 +142,24 @@ export class EducacionComponent implements OnInit {
   }
 
 
+  get titulo(){
+    return this.formulario.get('titulo');
+  }
 
+  get info(){
+    return this.formulario.get('info');
+  }
 
+  get instituto(){
+    return this.formulario.get('instituto');
+  }
+  get inicio(){
+    return this.formulario.get('inicio');
+  }
+
+  get  fin(){
+    return this.formulario.get('fin');
+  }
 
 
 

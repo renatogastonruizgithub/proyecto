@@ -8,10 +8,10 @@ import { ModalComponent } from 'src/app/dashboard/components/modal/modal.compone
 import { AppComponent } from 'src/app/app.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { HeaderComponent } from '../components/header/header.component';
-import { HomeComponent } from '../components/home/home.component';
+
 import { SobreComponent } from '../components/sobre/sobre.component';
 
-import { ContactoComponent } from '../components/contacto/contacto.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminServicesService } from 'src/app/services/admin-services.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -32,10 +32,8 @@ import { LoaderDashboardComponent } from '../components/loader-dashboard/loader-
     ModalComponent,
     HeaderComponent,
     SidebarComponent,
-    HomeComponent,
     SobreComponent,
-    EducacionComponent,
-    ContactoComponent,
+    EducacionComponent,    
     EditModalComponent,
     InicioAdminComponent,
     TrabajosComponent,

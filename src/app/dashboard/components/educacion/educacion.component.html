@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="row mb-3 ">
     <div class="col-12">
        <div
@@ -11,8 +11,7 @@
         data-bs-toggle="modal"
         class="d-flex flex-column btn btn-primary"
         type="button"
-        (click)="openModal()"
-  
+        (click)="openModal()"  
       >
         Nuevo
       </button>
@@ -20,10 +19,8 @@
     </div>
    
   </div>
- <ng-template #valid >
-  
-    <div class="row">      
-      
+ <ng-template #valid >  
+    <div class="row">
         <div class="col-md-12 align-items-center">          
           <div class="card shadow rounded">
             <app-loader-dashboard></app-loader-dashboard>            
@@ -69,7 +66,7 @@
     </div>
   </div>
  
-</div>
+
 
 
 
@@ -77,7 +74,12 @@
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-      <h5 class="modal-title">f</h5>
+        <ng-template #valido>
+          
+          <h2 class="text-dark">Actualiza tus datos</h2>
+        </ng-template>
+        
+      <h2  *ngIf="!visibleBtn;else valido" class="modal-title text-dark">Guardar</h2 >
       <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body ">               
@@ -91,7 +93,7 @@
             id="floatingInput"
           />
           <label for="floatingInput">titulo</label>
-      <!--  <p *ngIf="apellido?.hasError('required')&& apellido?.touched" class="alert-danger">falta apellido</p>  -->
+       <p *ngIf="titulo?.hasError('required')&& titulo?.touched" class="alert-danger">falta titulo</p> 
         </div>
         <div class="form-floating input-group-sm mb-3">
           <input 
@@ -101,7 +103,7 @@
             id="floatingInput"
           />
           <label for="floatingInput">instituto</label>
-      <!--  <p *ngIf="apellido?.hasError('required')&& apellido?.touched" class="alert-danger">falta apellido</p>  -->
+       <p *ngIf="instituto?.hasError('required')&& instituto?.touched" class="alert-danger">falta instituto</p> 
         </div>
         <div class="form-floating input-group-sm mb-3">
           <textarea    
@@ -111,7 +113,7 @@
           id="floatingInput">     
           </textarea>
           <label for="floatingInput">descripion</label> 
-         <!--  <p *ngIf="descripion?.hasError('required')&& descripion?.touched" class="alert-danger">falta descripion</p> -->         
+          <p *ngIf="info?.hasError('required')&& info?.touched" class="alert-danger">falta info</p>         
         </div>
         <div class="form-floating input-group-sm mb-3">
           <input 
@@ -121,7 +123,7 @@
             id="floatingInput"
           />
           <label for="floatingInput">Desde</label>
-          <!-- <p *ngIf="nacimiento?.hasError('required')&& nacimiento?.touched" class="alert-danger">falta nacimiento</p>   --> 
+          <p *ngIf="inicio?.hasError('required')&& inicio?.touched" class="alert-danger">falta Desde</p>   
         </div>
         <div class="form-floating input-group-sm mb-3">
           <input 
@@ -131,7 +133,7 @@
             id="floatingInput"
           />
           <label for="floatingInput">Hasta</label>
-         <!--  <p *ngIf="nacimiento?.hasError('required')&& nacimiento?.touched" class="alert-danger">falta nacimiento</p>    -->
+          <p *ngIf="fin?.hasError('required')&& fin?.touched" class="alert-danger">falta Hasta</p>   
         </div>
        </form>
        

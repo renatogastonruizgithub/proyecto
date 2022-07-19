@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
 import { TokenService } from 'src/app/services/token.service';
 import { LoaderDashboardService } from 'src/app/services/loader-dashboard.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,20 +19,17 @@ import { LoaderDashboardService } from 'src/app/services/loader-dashboard.servic
   styleUrls: ['./sobre.component.scss']
 })
 export class SobreComponent implements OnInit {
-  formulario:FormGroup;
-  Ediformulario:FormGroup;
-  modal=false;
-  edit=false;
+  formulario:FormGroup; 
   personas:Persona[];
   validar= false;
-  id: number;
-  @Output() item = new EventEmitter();
+  id: number; 
   realRol: string;
-  
+  mostrar:boolean=false;
+  visibleBtn:boolean=false;
   /* @Output() editarOpen = new EventEmitter();  */
  
 
-  constructor(private load:LoaderDashboardService ,private tokenService:TokenService, private router:Router,private formBuilder:FormBuilder, private servicio:AdminServicesService) { 
+  constructor(private toastr: ToastrService,private load:LoaderDashboardService ,private tokenService:TokenService, private router:Router,private formBuilder:FormBuilder, private servicio:AdminServicesService) { 
 
      this.formulario=this.formBuilder.group({
        id:[''],
@@ -49,24 +47,6 @@ export class SobreComponent implements OnInit {
     nro:['',[Validators.required,Validators.maxLength(35)]],
     tituloAbout:['',[Validators.required,Validators.maxLength(35)]]
     }) 
-
-
-    this.Ediformulario=this.formBuilder.group({
-      id:[''],
-      nombre:['',[Validators.required,Validators.maxLength(35)]],
-      apellido:['',[Validators.required,Validators.maxLength(35)]],
-      nacimiento:['',[Validators.required,]],
-      ocupacion:['',[Validators.required,Validators.maxLength(35)]],
-      stack:['',[Validators.required,Validators.maxLength(35)]],
-      nacionalidad:['',[Validators.required,Validators.maxLength(35)]],
-      provincia:['',[Validators.required,Validators.maxLength(35)]],
-      domicilio:['',[Validators.required,Validators.maxLength(35)]],
-      descripion:['',[Validators.required,Validators.maxLength(535)]],
-      imgBanner:['',[Validators.required,Validators.maxLength(235)]],
-      imgAbout:['',[Validators.required,Validators.maxLength(235)]],
-      nro:['',[Validators.required,Validators.maxLength(35)]],
-      tituloAbout:['',[Validators.required,Validators.maxLength(35)]]   
-   })  
 
 
   } //validar solo letras
@@ -94,8 +74,9 @@ export class SobreComponent implements OnInit {
   }
  
   openEdit(personas:Persona){
-  this.edit=true;
-   this.Ediformulario.setValue({
+    this.openModal();
+    this.visibleBtn=true;
+   this.formulario.setValue({
     id:personas.id,
      nombre:personas.nombre,
       apellido:personas.apellido,   
@@ -113,29 +94,29 @@ export class SobreComponent implements OnInit {
     })
  } 
 
-  abrirModal(){    
-    this.modal=true;  
-  } 
-  closeEdit(e: any){
-    this.edit=e;
-  }
-  cerrarModal(e: any){
-    this.modal=e;   
+ cerrarModal(){
+  this.mostrar=false;  
   }
 
+  openModal(){
+    this.mostrar=true;
+    this.visibleBtn=false;
+    this.formulario.reset();
+  }
   guardar(){
+    this.formulario.markAllAsTouched();
     if(this.formulario.valid) {
       this.servicio.createPersona(this.formulario.value).subscribe(data=>
         {
           this.personas.push.apply(data);            
           this.formulario.reset();
-          this.actualizar();
-        
-          alert("se creo con exito");     
+          this.actualizar();        
+          this.toastr.success("se creo con exito"); 
+          this.mostrar=false; 
       })
           
     } else{
-      alert("campos vacios"); 
+      this.toastr.warning("campos vacios"); 
 
     }
   }
@@ -144,28 +125,27 @@ export class SobreComponent implements OnInit {
     if(confirm("¿Desea eliminar el registro?")){
     this.servicio.eliminarPersona(personas.id).subscribe(res=>{
         this.personas=this.personas.filter(p=>p!==personas);
-        alert("registro eliminado");
-        this.actualizar();
-      
-      })
-      
+        this.toastr.success("eliminado exito");
+           
+      })      
     }
   
   }
 
  editar(){
-   this.servicio.editrPersona(this.Ediformulario.value).subscribe({
-   
-    
-  next:(response:Persona)=>{
-    console.log(this.personas)
-      alert("se actuzlizo");
-      this.actualizar();         
-     },
-     error:(error:HttpErrorResponse)=>{
-       alert(error.message);
-     }     
-   })
+  this.formulario.markAllAsTouched();
+  if(this.formulario.valid){
+    this.servicio.editrPersona(this.formulario.value).subscribe({    
+      next:(response:Persona)=>{
+        console.log(this.personas)
+        this.toastr.success("se actuzlizo");
+          this.actualizar();         
+         },
+         error:(error:HttpErrorResponse)=>{
+          this.toastr.warning(error.message);
+         }     
+       })
+  }  
   
 } 
 

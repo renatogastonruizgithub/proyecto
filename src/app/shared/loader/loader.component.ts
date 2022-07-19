@@ -18,9 +18,11 @@ export class LoaderComponent implements OnInit {
 
       if(event instanceof NavigationStart){
         this.loader.showLoader();
-      }  else if(event instanceof NavigationEnd ||event instanceof NavigationCancel || event instanceof NavigationError ){
+      } 
+      
+      else if(event instanceof NavigationEnd ||event instanceof NavigationCancel || event instanceof NavigationError ){
         this.loader.hideLoader();
-        console.log("error")
+    
       } 
     }) 
    }

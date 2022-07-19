@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegistroGuard } from './guards/registro.guard';
 
 
 import { ContactoComponent } from './pages/contacto/contacto.component';

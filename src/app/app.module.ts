@@ -59,6 +59,7 @@ import { RegisterOkComponent } from './pages/register-ok/register-ok.component';
       timeOut: 2000,
       positionClass: 'toast-top-center',
       preventDuplicates: true,
+      
     }
     ),
     NgCircleProgressModule.forRoot({    

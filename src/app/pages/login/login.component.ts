@@ -16,7 +16,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent implements OnInit {
   formulario:FormGroup; 
- 
+  cargando:boolean=false;
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
@@ -48,15 +48,17 @@ export class LoginComponent implements OnInit {
 login(){ 
   this.formulario.markAllAsTouched(); 
   if(this.formulario.valid){
+    this.cargando=true;
     this.authService.login(this.formulario.value).subscribe( {
-      next:(jwt:Jwt)=>{           
+      next:(jwt:Jwt)=>{
+        this.cargando=false;           
         this.tokenService.setToken(jwt.tokenDeAcceso);       
         this.toastr.success("Inicio de sesion con exito ")
         this.router.navigate(['/admin']); 
       },
       error:(error:HttpErrorResponse)=>{       
         this.toastr.warning("Usuario o contraseña no coinciden")
-       
+        this.cargando=false; 
       }
     })
   }

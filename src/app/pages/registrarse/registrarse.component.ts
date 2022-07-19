@@ -16,6 +16,8 @@ export class RegistrarseComponent implements OnInit {
   formularioR:FormGroup;
   rol: Array<string> = ['admin', 'user'];
   new:NuevoUsuario[];
+  cargando: boolean =false;
+  h:string="df"
   constructor( private router: Router,
     private toastr: ToastrService,
     private formBuilder:FormBuilder,
@@ -59,20 +61,25 @@ export class RegistrarseComponent implements OnInit {
   registro(){  
     this.formularioR.markAllAsTouched(); 
     if(this.formularioR.valid){
-     
+     this.cargando=true;
       this.authServicio.nuevoUsuario(this.formularioR.value).subscribe({
         next:(nuevoUsuario:NuevoUsuario)=>{          
-          this.toastr.success("cuenta creada con exito")       
+          this.toastr.success("cuenta creada con exito")
+          //para guards de ruta registrado Ok
+        /*   window.sessionStorage.removeItem("key");
+          window.sessionStorage.setItem("key",this.h); */
+          this.cargando=false;       
           this.formularioR.reset();
                 
            setTimeout(()=>{
             this.router.navigate(['/registroOk']);
+            
           },1000) 
              
         },
         error:(error:HttpErrorResponse)=>{
           this.toastr.warning(error.error.mensaje)
-          console.log(error.error)        
+          this.cargando=false;        
         }
       })      
     }   
