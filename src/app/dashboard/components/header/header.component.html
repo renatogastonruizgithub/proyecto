@@ -4,8 +4,10 @@
  <div class="d-flex logo align-items-center justify-content-between">
      
       <span routerLink="/admin" class=" d-none d-lg-block navbar-brand">Portafolio admin</span>
-   
-    <i class="bi bi-list toggle-sidebar-btn" (click)="side.openSider()"></i>
+
+    <ng-template #valid><i class="bi bi-list toggle-sidebar-btn" (click)="side.openSider()"></i></ng-template>
+        
+    <i class="bi bi-x-lg toggle-sidebar-btn" *ngIf="side.show;else valid" (click)="side.openSider()"></i>
   </div>
   <nav class="header-nav ms-auto ">
     <ul class="d-flex align-items-center sidebar-nav">

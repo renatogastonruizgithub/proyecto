@@ -7,7 +7,7 @@ import { Subscription, timeout, timer } from 'rxjs';
   styleUrls: ['./register-ok.component.scss']
 })
 export class RegisterOkComponent implements OnInit {
-  count: number = 3;
+  count: number = 6;
   subscribeTimer: any;
   source:Subscription;
   tiempo:any;

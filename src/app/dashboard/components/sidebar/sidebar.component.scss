@@ -5,7 +5,7 @@
     top: 60px;
     left: 0;
     bottom: 0;
-    width: 70%;
+    width: 100%;
     z-index: 1996;
     transition: all 0.3s;
     padding: 20px;
@@ -129,7 +129,10 @@
   .sidebar-nav .nav-content a:hover, .sidebar-nav .nav-content a.active {
     color: #4154f1;
   }
-  .sidebar-nav .nav-content a.active i {
+  /* .sidebar-nav .nav-content a.active i {
     background-color: #4154f1;
+  } */
+  a.active{  
+    color: #cf7225 !important;
   }
   

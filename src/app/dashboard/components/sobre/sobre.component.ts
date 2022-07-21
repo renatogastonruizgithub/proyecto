@@ -139,7 +139,8 @@ export class SobreComponent implements OnInit {
       next:(response:Persona)=>{
         console.log(this.personas)
         this.toastr.success("se actuzlizo");
-          this.actualizar();         
+          this.actualizar();
+          this.mostrar=false;          
          },
          error:(error:HttpErrorResponse)=>{
           this.toastr.warning(error.message);

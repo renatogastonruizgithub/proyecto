@@ -4,13 +4,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-heading">Pages</li>
       <li class="nav-item">
-        <a (click)="closeSider()" class="nav-link collapsed" routerLink="/admin" routerLinkActive="active">
+        <a (click)="closeSider()" [routerLinkActiveOptions]="{exact:
+          true}" class="nav-link collapsed" routerLink="/admin" routerLinkActive="active">
           <i class="bi bi-question-circle"></i>
           <span>home</span>
         </a>
       </li>
       <li class="nav-item">
-        <a (click)="closeSider()" class="nav-link collapsed" routerLink="sobre" routerLinkActive="active">
+        <a (click)="closeSider()" class="nav-link collapsed"  routerLink="sobre" routerLinkActive="active">
           <i class="bi bi-chat-dots"></i>
           <span>Sobre mi</span>
         </a>
