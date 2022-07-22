@@ -3,10 +3,9 @@
     <div
       class="card-header mb-3 d-flex align-items-center justify-content-evenly"
     >
-      <h3 class="text-dark mb-0">Datos personales</h3>
+      <h3 class="text-light mb-0">Datos personales</h3>
       <button
-        *ngIf="!personas?.length && realRol === 'admin'"
-        data-bs-toggle="modal"
+        *ngIf="!personas?.length && realRol === 'admin'"        
         class="d-flex flex-column btn btn-primary"
         (click)="openModal()"
         type="button"
@@ -314,8 +313,7 @@
           
           <button
           *ngIf="!visibleBtn"
-          (click)="guardar()"
-          data-bs-toggle="modal"
+          (click)="guardar()"          
           class="d-flex flex-column btn btn-primary"
           type="button"
         >
@@ -323,8 +321,7 @@
         </button>
         <button
         (click)="editar()"
-        *ngIf="visibleBtn"
-        data-bs-toggle="modal"
+        *ngIf="visibleBtn"        
         class="d-flex flex-column btn btn-primary"
         type="button"        
       >

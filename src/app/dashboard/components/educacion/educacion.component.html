@@ -4,11 +4,10 @@
        <div
       class="card-header mb-3 d-flex align-items-center justify-content-evenly"
     >
-      <h3 class="text-dark mb-0">Datos sobre tu educaciones</h3>
+      <h3 class="text-light mb-0">Datos sobre tu educaciones</h3>
     
       <button  
-      *ngIf="realRol === 'admin'"
-        data-bs-toggle="modal"
+      *ngIf="realRol === 'admin'"        
         class="d-flex flex-column btn btn-primary"
         type="button"
         (click)="openModal()"  
@@ -142,16 +141,14 @@
         
         <button
         *ngIf="!visibleBtn"
-        (click)="guardar()"
-        data-bs-toggle="modal"
+        (click)="guardar()"        
         class="d-flex flex-column btn btn-primary"
         type="button"
       >
         Guardar
       </button>
       <button
-      *ngIf="visibleBtn"
-      data-bs-toggle="modal"
+      *ngIf="visibleBtn"     
       class="d-flex flex-column btn btn-primary"
       type="button"
       (click)="actualizar()"

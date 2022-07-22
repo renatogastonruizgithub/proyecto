@@ -4,3 +4,11 @@ p{
 li{
     list-style-type: none;
 }
+.modal{
+    display: block!important;
+    background-color: rgba(0, 0, 0, 0.719);
+}
+.card-header{
+    background-color: rgba(59, 59, 59, 0.486);
+    border-bottom: 1px solid rgba(243, 243, 243, 0.125);
+}

@@ -19,7 +19,7 @@ export class SobreMiService {
   constructor(  private http:HttpClient,    public loader:CargaLoaderService  ) { 
   }
 
- /*  getHome():Observable<any>{
+  getHome():Observable<any>{
      this.loader.showLoader(); 
     return this.http.get(this.url+"home").pipe(
       map(r =>{
@@ -27,10 +27,10 @@ export class SobreMiService {
         return r
       })
     );   
-  } */
-  getHome():Observable<any>{  
-   return this.http.get(this.url+"home");
   }
+ /*  getHome():Observable<any>{  
+   return this.http.get(this.url+"home");
+  } */
 
     getdatos():Observable<any>{
       this.loader.showLoader();

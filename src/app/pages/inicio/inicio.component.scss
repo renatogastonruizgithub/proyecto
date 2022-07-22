@@ -4,7 +4,9 @@
 /* font-family: 'Lato', sans-serif;
 font-family: 'Merriweather', serif; 
 font-family: 'Anton', sans-serif;*/
-
+.body{
+  background-color: $negro !important;
+}
 .nav {
   position: absolute;
   top: 1rem;
@@ -12,14 +14,18 @@ font-family: 'Anton', sans-serif;*/
   width: 90%;
   height: 8vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-right: 5%;
   margin-left: 5%;
   color: $blanco;
   z-index: 100;
   a {
-    display: none;
+    display: block;
+    color: $blanco;
+    &:nth-child(1){
+      padding-right: 1rem;
+    }
   }
   .cont-logo {
     display: flex;
@@ -44,7 +50,7 @@ font-family: 'Anton', sans-serif;*/
   }
   .logo-lastname {
     position: absolute;
-    bottom: -0.1px;
+    bottom: 11px;
     left: 2.5rem;
     z-index: 2;
     width: 100%;
@@ -65,25 +71,10 @@ font-family: 'Anton', sans-serif;*/
     right: 0;
     top: 0;
     height: 100vh;
-    z-index: 1;
-    object-fit: cover;
+    z-index: 1;    
     width: 100%;   
   }
- /*  background-size: cover;
-  height: 100vh;
-  z-index: 1;
-  background: #040404 url(../../../assets/img/bg.jpg) top right no-repeat; */
- /*  &::before {
-    content: "";
-    position: fixed;
-    background: #040404 url(../../../assets/img/bg.jpg) top right no-repeat;
-    background-size: cover;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 1;
-  } */
+ 
   .heroDescription {
     z-index: 2;
     position: absolute;
@@ -128,7 +119,7 @@ font-family: 'Anton', sans-serif;*/
       }
       h1 {
         font-size: 12vw;
-        color: $blanco;
+        color: $naranja;
         position: relative;
         letter-spacing: 2px;
       }
@@ -294,7 +285,7 @@ font-family: 'Anton', sans-serif;*/
         }
         h1 {
           font-size: 5.5vw;
-          color: $blanco;
+          color: $naranja;
           position: relative;
           letter-spacing: 2px;
           /*  -webkit-text-stroke: 1px $azul;

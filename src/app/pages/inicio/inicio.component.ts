@@ -18,11 +18,11 @@ export class InicioComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.loader.showLoader();
+   /*  this.loader.showLoader(); */
     this.SobreMiService.getHome().subscribe({
       next:(response:Persona[] )=>{  
         this.home=response;     
-        this.loader.hideLoader();
+        /* this.loader.hideLoader(); */
       },
       error:(error:HttpErrorResponse)=>{
         this.toastr.warning( error.message);

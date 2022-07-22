@@ -4,11 +4,10 @@
         <div
         class="card-header mb-3 d-flex align-items-center justify-content-evenly"
       >
-        <h3 class="text-dark mb-0">Datos sobre tus proyectos</h3>
+        <h3 class="text-light mb-0">Datos sobre tus proyectos</h3>
       
         <button
-        *ngIf="realRol === 'admin'"
-          data-bs-toggle="modal"
+        *ngIf="realRol === 'admin'"          
           class="d-flex flex-column btn btn-primary"
           type="button"
           (click)="openModal()"    
@@ -60,7 +59,7 @@
     </div>   
 
   
-<div *ngIf="mostrar"  class="modal " tabindex="-1">
+<div *ngIf="mostrar"  class="modal" tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">

@@ -1,12 +1,13 @@
 
 @import "../../../../variables.scss"; 
-html,body{
- 
-  height: 100vh!important;
+html{
+  background-color: #000000 !important; 
+
 }
 .main-dashboard{ 
+ 
   p{
-    color: black !important;
+    color: rgb(0, 0, 0) !important;
   }
   .section-dashboard{   
    width: 100%;
