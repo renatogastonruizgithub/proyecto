@@ -20,34 +20,36 @@ export class SobreMiComponent implements OnInit {
   habilidades:Habilidadas[];
   trabajos:Trabajos[];
   edu:any=[];
+  cargando:boolean=false;
   constructor(private SobreMiService:SobreMiService) { this.titleAside=['</Sobre mi>'];}
 
   ngOnInit(): void {
-   
-       this.SobreMiService.getsobre().subscribe(g=>{
-      this.sobre=g
-           console.log(this.sobre)    
-       
+      this.cargando=true;
+      this.SobreMiService.getsobre().subscribe(g=>{
+       this.sobre=g
+       this.cargando=false;    
+      console.log(this.sobre) 
      })
-
 
      this.SobreMiService.getEdu().subscribe((re)=>{
       this.edu=re
        console.log(re);
      })
-
-
      this.SobreMiService.getHabilidades().subscribe((res)=>{
-      this.habilidades=res;
-      
+      this.habilidades=res;      
      })
-
      this.SobreMiService.getTrabajos().subscribe((res)=>{
-      this.trabajos=res;
-      
+      this.trabajos=res; 
+      console.log( this.trabajos)     
      })
+     
   }
 
-
+ edad(n:string){
+  let añoActual = new Date().getFullYear();
+  let todayDate = new Date(Date.parse(n))
+  let edad =añoActual - todayDate.getFullYear();   
+  return edad;
+  }
 
 }

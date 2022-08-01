@@ -64,10 +64,7 @@ export class RegistrarseComponent implements OnInit {
      this.cargando=true;
       this.authServicio.nuevoUsuario(this.formularioR.value).subscribe({
         next:(nuevoUsuario:NuevoUsuario)=>{          
-          this.toastr.success("cuenta creada con exito")
-          //para guards de ruta registrado Ok
-        /*   window.sessionStorage.removeItem("key");
-          window.sessionStorage.setItem("key",this.h); */
+          this.toastr.success("cuenta creada con exito")        
           this.cargando=false;       
           this.formularioR.reset();
                 

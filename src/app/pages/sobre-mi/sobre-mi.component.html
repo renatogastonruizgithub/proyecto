@@ -9,13 +9,32 @@
   </div>
   <main class="main">
     <div class="cardSobreMi gridContainer" *ngFor="let item of sobre">
-      <div class="img-responsive cardImg">
-        <img [src]="item.imgAbout" alt="" />
-      </div>
+      <div class="img-responsive cardImg">      
+        <ng-template #valid >
+          <img [src]="item.imgAbout" alt="desarrollador web"/> 
+        </ng-template>       
+          <div *ngIf="cargando;else valid"  class="d-flex justify-content-center text-center content-spinner">
+            <div class="spinner-border text-light ml-1" role="status">              
+          </div>         
+        </div>      
+        
+    </div> 
       <div class="cardTexto">
-        <h3>{{ item.tituloAbout }}</h3>
-        <p>{{ item.descripion }}</p>
+        <div>
+          <h3>{{ item.tituloAbout }}</h3>
+          <div class="d-flex">
+            <h3>{{ item.nombre }}</h3>
+            &nbsp;  
+            <h3>{{item.apellido}}</h3>
+          </div>          
+        </div>       
+        <p>{{ item.descripion}}</p>
+        <div class="datos">
+          <p class="text-naranja">{{edad(item.nacimiento)}} años</p>
+          <p class="text-naranja">{{item.provincia}},capital</p>
+        </div>    
       </div>
+
     </div>
     <section class="skills">
       <div class="titles">
@@ -24,9 +43,8 @@
       <section class="content-skills">
         <div class="wraper" *ngFor="let h of habilidades">
           <div class="skill">
-            <figure>
-              <!-- <img  [src]="h.icono" alt=""> -->
-              <figcaption>
+            <figure>           
+              <figcaption class="text-naranja">
                 {{ h.nombre }}
               </figcaption>
             </figure>
@@ -37,29 +55,27 @@
     </section>
     <section class="resume" >
       <div class="titles">
-        <h3>{{ educacion }}</h3>
+        <h2>{{ educacion }}</h2>
       </div>
       <div class="conten-resume" >
-        <div class="resume-item"  *ngFor="let item of edu">
-          <span></span>
-          <span></span>
-          <h4>{{ item.instituto }}</h4>
+        <div class="resume-item"  *ngFor="let item of edu">         
+          <h5>{{ item.instituto }}</h5>
           <div class="d-flex mt-1 ml-2">
-            <p class="pl-1">
-              <em>{{ item.titulo }}</em>
-            </p>
+            <div class="pl-1">
+              <h2 class="text-naranja">{{ item.titulo }}</h2>
+            </div>
           </div>
           <div class="resume-text">
             <div class="d-flex mt-1 ml-2">
-              <p>{{ item.info }}</p>
+              <p >{{ item.info }}</p>
             </div>
-            <div class="d-flex mt-1 ml-2">
-              <i class="span">"fech de inicio" :</i>
-              <p>"{{ item.inicio | date: "dd-MM-yyyy" }}",</p>
+            <div class="d-flex fechas">
+              <p class="fechas">Iniciado</p>
+              <p >{{ item.inicio | date: "dd-MM-yyyy" }}</p>
             </div>
-            <div class="d-flex mt-1 ml-2">
-              <i class="span">"fech de finalizacion" :</i>
-              <p>"{{ item.fin | date: "dd-MM-yyyy" }}"</p>
+            <div class="d-flex fechas">
+              <p >Finalizado</p>
+              <p  >{{ item.fin | date: "dd-MM-yyyy" }}</p>
             </div>
           </div>
         </div>
@@ -67,16 +83,17 @@
     </section>
     <section class="resume-job">
       <div class="titles">
-        <h3>{{ expe }}</h3>
+        <h2>{{ expe }}</h2>
       </div>
-      <div class="resume-item">
-        <h4>Master of Fine Arts &amp; Graphic Design</h4>
-        <h5>2015 - 2016</h5>
-        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+      <div class="resume-item"  *ngFor="let item of trabajos">
+        <h4>{{item.nombre}}</h4>
+        <div class="d-flex">
+          <p  >{{ item.inicio | date: "yyyy" }}</p>
+          <p  >{{ item.fin | date: "yyyy" }}</p>
+        </div>        
+        <p><em>{{item.cargo}}</em></p>
         <p>
-          Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam
-          iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti
-          nerada porti sand markend
+          {{item.descripcion}}
         </p>
       </div>
     </section>

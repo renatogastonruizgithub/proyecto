@@ -6,7 +6,6 @@
   display: flex;
   align-items: flex-end;
   position: relative;
-  background-color: $negro;
   top: 6rem;
   justify-content: center;
   &::before {
@@ -52,7 +51,7 @@
       left: 6.4rem;
     }
     span {
-      font-size:13vh;
+      font-size:12vh;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       word-wrap: break-word;
@@ -65,7 +64,14 @@
     }
   }
 }
-
+@include laptop{
+  .aside-fixed {
+   span{
+     margin-bottom: 0;
+   } 
+  }
+  
+}
 @include laptop_desktop{
   .aside-fixed {
     height: 100vh !important;
@@ -75,7 +81,7 @@
     transform: none;
     top: 0;
     position: fixed;
-    background-color:$blanco;
+    background-color:$negro;
   
     &::before {
       width: 2px;
@@ -98,12 +104,7 @@
       position: relative;
       color: #ffffff;    
       letter-spacing: 1px;
-      margin-left: .8rem;
-      background: url('https://concepto.de/wp-content/uploads/2018/09/lenguaje-de-programaci%C3%B3n-e1537466880796-800x400.jpg');
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: contain;
-    background-position: center center;
+      margin-left: .8rem;    
     }
   }
  

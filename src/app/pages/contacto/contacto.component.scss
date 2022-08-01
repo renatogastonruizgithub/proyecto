@@ -3,6 +3,13 @@
 body,html{
   background-color: #000000 !important;
 }
+.alert-danger{
+  color: #c30d0d;
+}
+.spinner-border{
+  border: 0.25em solid $azul;
+  border-right-color: transparent;
+}
 .main {
   h3 {
     text-align: center;
@@ -15,7 +22,7 @@ body,html{
     overflow: hidden;
     display: flex;
     justify-content: center;
-    margin-bottom: 8rem;
+    margin-bottom: 8rem;   
   }
 }
 .form {
@@ -36,7 +43,9 @@ $width: 100%;
   width: $width;
   margin: 42px 0;
   position: relative;
-  
+  >div{
+    position: absolute;
+  }
 }
 
 input[type="text"],input[type="textarea"],
@@ -87,10 +96,30 @@ input[type="text"]{
 @media only screen and (min-width: 568px) {
   .form {
     width: 20rem;
+    .botonP{
+      width: 20rem;
+    }   
   }
+  .main{
+    h3{
+      font-size: 2.5rem;
+    }
+  }
+  
 }
+
 @include laptop_desktop {
   .form {
-    width: 30rem;
+    width: 21rem;
+    .botonP{
+      width: 21rem;
+    }
+  }
+}
+@include laptop{
+  .main{
+    h3{
+      font-size: 2.2rem;
+    }
   }
 }

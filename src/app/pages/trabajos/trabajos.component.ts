@@ -21,8 +21,7 @@ trabajo:Array<any>=[];
   ngOnInit(): void {
       
        this.SobreMiService.getProyectos().subscribe( resp =>{
-       this.trabajo=resp; 
-     /*  console.log(resp); */
+       this.trabajo=resp;   
      
      })
 

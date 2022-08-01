@@ -183,21 +183,19 @@ a {
 
 @include laptop{
   .main {   
-    grid-column: 3/13;
-    background-color: rgb(151, 91, 12);
+    grid-column: 3/13;   
   }
 }
 @include desktop{
   .main {   
-    grid-column: 3/12;
-  
+    grid-column: 2/12;   
   }
 }
 
 @include tablet{
   .main {   
-    grid-column: 3/13;
-    background-color: rgb(145, 222, 135);
+    grid-column: 3/12;
+    background-color: rgb(119, 163, 113);
   }
 }
 
@@ -222,3 +220,62 @@ a {
     background-color: transparent;
   }
 } 
+.text-naranja{
+color: $naranja;
+font-weight: 700;
+font-family: "Lato", sans-serif;
+}
+.botonP {
+  width: 90%;
+  position: absolute; 
+  margin: 0;
+  border: 1px solid $blanco;
+  padding: 12px 30px;
+  outline: solid 0 $blanco !important;
+  background-color: $negro;
+  box-shadow: 6px 6px 0 $blanco;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  color: $blanco;
+  cursor: pointer;
+  font-family: "Lato", sans-serif; 
+  &:hover {
+    color: $negro;
+    transition: 1s;
+    background-color: $blanco;
+    box-shadow: none;
+  }
+}
+@include tablet {
+  .botonP {
+ /*    bottom: ; */
+  }
+}
+@include laptop_desktop{
+  .botonP {
+    position: absolute;
+    margin: 0;    
+    padding: 12px 30px;
+    color: $blanco;
+    outline: solid 0 $blanco !important;
+    background-color: $negro;
+    box-shadow: 6px 6px 0 $blanco;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-family: "Lato", sans-serif;
+    border: 1px solid $blanco; 
+    &:hover {
+      color: $blanco;
+      transition: 1s;
+      background-color: $azul;
+      box-shadow: none;
+      border: 1px solid $azul
+    }
+  }
+}

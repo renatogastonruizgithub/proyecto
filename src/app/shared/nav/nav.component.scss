@@ -46,8 +46,7 @@
   }
   .menu-logo {
     display: flex;
-    align-items: center;
-    position: relative;
+    align-items: center;    
     color: $blanco;
     .m-logo {
       padding: 0 0 5px 0;
@@ -66,8 +65,8 @@
     }
     .menu-logo-lastname {
       position: absolute;
-      bottom: 0.4rem;
-      left: 2rem;
+      bottom: 0;
+      left: 31px;
       z-index: 2;
       width: 100%;
       font-family: "poppins", sans-serif;
@@ -79,14 +78,33 @@
   .menu-template {
     left: 1rem;
     width: 96%;
+    position: fixed;
+   
   }
-}
 
- @include laptop_desktop {
+}
+@include laptop{
+  .menu-template {
+    left: 7rem;
+    width: 85%;
+    position: fixed;
+  }
+  .menu-logo{
+    .menu-logo-lastname{
+      left: 31px;
+    }
+   }
+}
+ @include desktop {
+   .menu-logo{
+    .menu-logo-lastname{
+      left: 42px !important;
+    }
+   }
   .menu-template {
     left:11rem;
     width: 80%;
-    
+    position: fixed;    
   }
   .menu-list {
      #menu{     
@@ -96,7 +114,7 @@
   .menu-template .menu-logo .m-logo span {
     font-size: 4.1rem;
   }
-  .menu-template {
+  .menu-template {   
     .menu-logo-name,
     .menu-logo-lastname {
       opacity: 0;
@@ -119,6 +137,9 @@
       }
     }
     .menu-list {
+      &:hover .hamburguesa span{
+        background-color: $azul;
+      }
       span {
         opacity: 1;
         margin-right: 20px;
@@ -126,14 +147,13 @@
       &:hover #menu {
         opacity: 0;
         transition: 1s;
+        
       }
       .hamburguesa {
-
         &:hover span:nth-child(1){
           transform: translateX(10px);
-          width: 80%;
-           
-          transition: ease-in-out .5s;
+          width: 80%;           
+          transition: ease-in-out .5s;         
         }
       }
     }

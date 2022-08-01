@@ -1,0 +1,27 @@
+@import "../../../variables.scss";
+section{
+ height: auto;
+ position: relative;
+ text-align: center;
+ height: 90vh;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+ justify-content: center;
+ h3{
+     font-size: 3rem;
+     margin-bottom: 1rem;
+ }
+ span{
+     font-size: 2rem;
+     color: $blanco;
+     cursor: pointer;
+     i{
+        margin-right: .5rem;
+    }
+
+     &:hover{
+        color: $azul;
+     }     
+ }
+}

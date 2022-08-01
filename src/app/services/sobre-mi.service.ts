@@ -60,11 +60,18 @@ export class SobreMiService {
     
     } 
     getTrabajos() {
-      return this.http.get<Trabajos[]>(this.url+'trabajos');
+      
+      return this.http.get<Trabajos[]>(this.url+'trabajos')
     }
 
-    getProyectos() {
-      return this.http.get<Proyectos[]>(this.url+'proyectos');
+    getProyectos():Observable<any> {
+      this.loader.showLoader();
+      return this.http.get<Proyectos[]>(this.url+'proyectos').pipe(
+        map(r =>{
+          this.loader.slowLoader();
+          return r
+        })
+        );  
     }
 
 }

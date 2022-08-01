@@ -65,6 +65,18 @@ font-family: 'Anton', sans-serif;*/
   align-items: center;
   justify-content: center;
   background-color: $negro;
+  &::after{
+    content: " ";
+    width: 100%;
+    height: 100%;
+    background-color: $negro;
+    opacity: .4;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+  }
   img{
     position: fixed;
     left: 0;
@@ -72,7 +84,9 @@ font-family: 'Anton', sans-serif;*/
     top: 0;
     height: 100vh;
     z-index: 1;    
-    width: 100%;   
+    width: 100%;
+    object-fit: contain;
+    mix-blend-mode: luminosity;
   }
  
   .heroDescription {

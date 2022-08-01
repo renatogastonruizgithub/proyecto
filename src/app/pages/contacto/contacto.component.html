@@ -8,39 +8,70 @@
     <section class="main">
       <h3>¿Tienes algun proyecto en mente?</h3>
       <div class="container-form">
-        <form class="form" (submit)="sendEmail($event)" >       
+        <form class="form"  [formGroup]="formulario"  (ngSubmit)="sendEmail()" >       
           <div class="input-container">
             <input
               class="effect-1"
               type="text"
               placeholder="Nombre"
-              name="nombre"
+              formControlName="name"             
             />
             <span class="focus-border"></span>
+            <div *ngIf="name?.errors && name?.touched">
+              <p *ngIf="name?.hasError('required')" class="alert-danger">
+                ingrese su nombre
+              </p>
+            </div>
           </div>
           <div class="input-container">
             <input
               class="effect-1"
               type="text"
-              placeholder="Apellido"
-              name="apellido"
+              placeholder="Asunto"
+              formControlName="subject"
             />
             <span class="focus-border"></span>
+            <div *ngIf="subject?.errors && subject?.touched">
+              <p *ngIf="subject?.hasError('required')" class="alert-danger">
+                ingrese su asunto
+              </p>
+            </div>
           </div>
           <div class="input-container">
             <input
               class="effect-1"
               type="text"
               placeholder="Tu Email"
-              name="email"
+              formControlName="mail"
             />
             <span class="focus-border"></span>
+            <div *ngIf="mail?.errors && mail?.touched">
+              <p *ngIf="mail?.hasError('required')" class="alert-danger">
+                ingrese su email
+              </p>
+              <div *ngIf="mail?.invalid && mail?.touched">
+                <p  class="alert-danger">
+                 direccion de correo invalida
+                </p>
+              </div>
+            </div>
           </div>
           <div class="input-container">          
-            <textarea   name="mensaje" placeholder="Describe tu proyecto" class="effect-1-txt" type="textarea" rows="4" required="required"></textarea>
+            <textarea   formControlName="body" placeholder="Describe tu proyecto" class="effect-1-txt" type="textarea" rows="4" required="required"></textarea>
             <span class="focus-border-txt"></span>
-          </div> 
-          <button type="submit" class="butonPrimary">Enviar</button>
+            <div *ngIf="body?.errors && body?.touched">
+              <p *ngIf="body?.hasError('required')" class="alert-danger">
+                ingrese su mensaje
+              </p>
+            </div>
+          </div>         
+            <button type="submit" class="botonP">
+              <ng-template #valid>Enviar</ng-template>
+              <div *ngIf="cargando;else valid"  class="d-flex justify-content-center text-center content-spinner">
+                <div class="spinner-border ml-1" role="status">      
+                </div>                      
+              </div>
+            </button>         
   
         </form>
       </div>
